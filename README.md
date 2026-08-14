@@ -24,6 +24,7 @@ notes/
 | 2026-08-11 | Week 01 | 01      | Cyber Kill Chain, Recon, OSINT, Ports, TCP/UDP, DNS, DHCP, IPs, Subnetting, NAT, SSH, Enum | [week-01/2026-08-11.md](week-01/2026-08-11.md) |
 | 2026-08-12 | Week 01 | 02      | Tails/Whonix, Tor, OpSec, Pentest Frameworks, OWASP, Compliance, India Laws, CyberArk & Check Point, NotebookLM | [week-01/2026-08-12.md](week-01/2026-08-12.md) |
 | 2026-08-13 | Week 01 | 03      | Web Apps, HTTP, OWASP, IDOR, Misconfig, Supply Chain, Crypto Fails, Injection, Insecure Design, Auth Fails, Integrity Fails, Logging, Exceptions, Burp Suite | [week-01/2026-08-13.md](week-01/2026-08-13.md) |
+| 2026-08-14 | Week 01 | 04      | Burp Suite, Intercepting Proxy, FoxyProxy Setup, CA Certificate Installation | [week-01/2026-08-14.md](week-01/2026-08-14.md) |
 
 ---
 
