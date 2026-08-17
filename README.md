@@ -33,3 +33,11 @@ notes/
 
 - [Week 01](week-01/)
 - [Week 02](week-02/)
+
+---
+
+## 🤝 Meetups & Events
+
+| Date       | Event Name      | Topics / Takeaways | File |
+|------------|-----------------|--------------------|------|
+| 2026-07-26 | Talent Talks    | Networking, Comm skills, Bash, SOC/NOC, APTs | [meetups/2026-07-26-talent-talks.md](meetups/2026-07-26-talent-talks.md) |
