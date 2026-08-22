@@ -26,6 +26,7 @@ notes/
 | 2026-08-13 | Week 01 | 03      | Web Apps, HTTP, OWASP, IDOR, Misconfig, Supply Chain, Crypto Fails, Injection, Insecure Design, Auth Fails, Integrity Fails, Logging, Exceptions, Burp Suite | [week-01/2026-08-13.md](week-01/2026-08-13.md) |
 | 2026-08-14 | Week 01 | 04      | Burp Suite, Intercepting Proxy, FoxyProxy Setup, CA Certificate Installation | [week-01/2026-08-14.md](week-01/2026-08-14.md) |
 | 2026-08-17 | Week 02 | 05      | Wireless Pentesting, IoT Botnets, EMS, Radio Frequencies, Wi-Fi Tech, IEEE 802.11 | [week-02/2026-08-17.md](week-02/2026-08-17.md) |
+| 2026-08-20 | Week 02 | 06      | Path Traversal, Directory Traversal, Filter Bypass, Null Byte, URL Encoding | [week-02/2026-08-20.md](week-02/2026-08-20.md) |
 
 ---
 
