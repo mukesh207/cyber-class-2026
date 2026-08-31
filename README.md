@@ -1,57 +1,135 @@
-# 🔐 Cybersecurity Class Notes
+# 🔐 CYBER LAB DASHBOARD
 
-> **How to use:** Add a new row to the table each time you create a daily note.
-> Copy `_template.md` → rename to `YYYY-MM-DD.md` → drop it in the right week folder.
-
----
-
-## 📂 Structure
-
-```
-notes/
-├── README.md          ← you are here (index)
-├── _template.md       ← copy this for every new day
-└── week-01/
-    └── 2026-08-11.md
-```
+> Welcome to the Cybersecurity Interactive Knowledge Base. This repository follows a strict **Learn → Understand → Practice → Connect → Review → Apply** methodology.
 
 ---
 
-## 📅 Notes Index
+## 📊 LEARNING PROGRESS
 
+*Calculated based on completed sessions and topics.*
+
+- 🌐 **Networking:** ████████░░ Strong
+- 🔎 **Recon:** ███████░░░ Learning
+- 🌐 **Web Security:** ████████░░ Strong
+- 🧪 **Pentesting:** ██████░░░░ Practicing
+- 🛡️ **SOC / Defense:** █████░░░░░ Learning
+- 📡 **Wireless:** ████░░░░░░ Learning
+
+---
+
+## 🔥 CURRENTLY LEARNING
+
+→ HTTP Security Headers
+→ Firewall / IDS / IPS / WAF
+→ Honeypots
+→ Web Application Security
+
+---
+
+## 🧪 LAB PROGRESS
+
+**TryHackMe**
+- Web Application Basics: ██████████ ✅ Completed
+- HTTP in Detail: ██████████ ✅ Completed
+
+**PortSwigger Web Security Academy**
+- Path Traversal: ██████████ ✅ Completed (6/6)
+- OS Command Injection: ██░░░░░░░░ 🔄 Practicing
+
+**Tools & Frameworks**
+- Burp Suite & Interception: ██████████ ✅ Completed
+- Wi-Fi Monitor Mode: ████░░░░░░ 🔄 Learning
+
+---
+
+## 🏆 ACHIEVEMENTS
+
+✅ Configured FoxyProxy and installed CA Certificates
+✅ Intercepted HTTPS traffic with Burp Suite
+✅ Completed first PTES Penetration Testing Report
+✅ Completed Cyber Kill Chain Report
+✅ Completed 6 Path Traversal labs
+⬜ Complete full web pentest
+⬜ Create first SIEM detection
+
+---
+
+## 🧠 KNOWLEDGE MAP & CONNECTIONS
+
+```text
+Networking
+    ↓
+TCP/IP & DNS
+    ↓
+HTTP / Web Apps
+    ↓
+User Input
+    ↓
+Input Validation
+    ↓
+Injection (Path Traversal / SQLi)
+    ↓
+Detection
+    ↓
+Firewall / IDS / WAF
+```
+
+---
+
+## 📚 REPOSITORY NAVIGATION
+
+### 🧠 [KNOWLEDGE MAP](./knowledge/)
+*Detailed breakdowns by domain (Networking, Web Security, Defense, etc.)*
+
+### 🧪 [LABS](./labs/)
+*Methodology, Attack Surface, and Exploit Payloads for PortSwigger and TryHackMe.*
+
+### 🛠️ [TOOLS](./tools/)
+*Workflows and Cheat Sheets for Burp Suite, Nmap, and more.*
+
+### 🛡️ [DEFENSE](./defense/)
+*SOC Analysis, Detection Logs, SIEM, and Mitigation Strategies.*
+
+### 📚 [WEEKLY NOTES](./weekly-notes/)
 | Date       | Week    | Session | Topics                        | File                               |
 |------------|---------|---------|-------------------------------|------------------------------------|
-| 2026-08-11 | Week 01 | 01      | Cyber Kill Chain, Recon, OSINT, Ports, TCP/UDP, DNS, DHCP, IPs, Subnetting, NAT, SSH, Enum | [week-01/2026-08-11.md](week-01/2026-08-11.md) |
-| 2026-08-12 | Week 01 | 02      | Tails/Whonix, Tor, OpSec, Pentest Frameworks, OWASP, Compliance, India Laws, CyberArk & Check Point, NotebookLM | [week-01/2026-08-12.md](week-01/2026-08-12.md) |
-| 2026-08-13 | Week 01 | 03      | Web Apps, HTTP, OWASP, IDOR, Misconfig, Supply Chain, Crypto Fails, Injection, Insecure Design, Auth Fails, Integrity Fails, Logging, Exceptions, Burp Suite | [week-01/2026-08-13.md](week-01/2026-08-13.md) |
-| 2026-08-14 | Week 01 | 04      | Burp Suite, Intercepting Proxy, FoxyProxy Setup, CA Certificate Installation | [week-01/2026-08-14.md](week-01/2026-08-14.md) |
-| 2026-08-17 | Week 02 | 05      | Wireless Pentesting, IoT Botnets, EMS, Radio Frequencies, Wi-Fi Tech, IEEE 802.11 | [week-02/2026-08-17.md](week-02/2026-08-17.md) |
-| 2026-08-20 | Week 02 | 06      | Path Traversal, Directory Traversal, Filter Bypass, Null Byte, URL Encoding | [week-02/2026-08-20.md](week-02/2026-08-20.md) |
-| 2026-08-27 | Week 03 | 07      | Events, Logs, and Incidents, PTES | [week-03/2026-08-27.md](week-03/2026-08-27.md) |
-| 2026-08-31 | Week 04 | 08      | Web Apps, HTTP, Network Security (Firewall, WAF, IDS/IPS), Honeypots | [week-04/2026-08-31.md](week-04/2026-08-31.md) |
+| 2026-08-11 | Week 01 | 01      | Cyber Kill Chain, Recon, OSINT, Ports, TCP/UDP, DNS, DHCP, IPs, Subnetting, NAT, SSH, Enum | [week-01/2026-08-11.md](weekly-notes/week-01/2026-08-11.md) |
+| 2026-08-12 | Week 01 | 02      | Tor, OpSec, Pentest Frameworks, OWASP, Compliance, Enterprise Security | [week-01/2026-08-12.md](weekly-notes/week-01/2026-08-12.md) |
+| 2026-08-13 | Week 01 | 03      | Web Apps, HTTP, OWASP, IDOR, Injection, Burp Suite | [week-01/2026-08-13.md](weekly-notes/week-01/2026-08-13.md) |
+| 2026-08-14 | Week 01 | 04      | Burp Suite, Intercepting Proxy, FoxyProxy Setup | [week-01/2026-08-14.md](weekly-notes/week-01/2026-08-14.md) |
+| 2026-08-17 | Week 02 | 05      | Wireless Pentesting, IoT, EMS, RF, Wi-Fi | [week-02/2026-08-17.md](weekly-notes/week-02/2026-08-17.md) |
+| 2026-08-20 | Week 02 | 06      | Path Traversal, OS Command Injection | [week-02/2026-08-20.md](weekly-notes/week-02/2026-08-20.md) |
+| 2026-08-27 | Week 03 | 07      | Events, Logs, PTES | [week-03/2026-08-27.md](weekly-notes/week-03/2026-08-27.md) |
+| 2026-08-31 | Week 04 | 08      | Web Apps, Firewall, WAF, IDS/IPS, Honeypots | [week-04/2026-08-31.md](weekly-notes/week-04/2026-08-31.md) |
+
+### 🎯 [INTERVIEW PREP](./interview/)
+*Revision questions, "Why" questions, and scenario-based Q&A.*
+
+### 📋 [ASSIGNMENTS](./assignments/)
+- [Cyber Kill Chain Report](./assignments/cyberkill_chain_report.md)
+- [PTES Penetration Testing Report](./assignments/PTES_Penetration_Testing_Report.md)
+
+### 🤝 [MEETUPS](./meetups/)
+- [2026-07-26 Talent Talks](./meetups/2026-07-26-talent-talks.md)
 
 ---
 
-## 🗂️ Weeks at a Glance
-
-- [Week 01](week-01/)
-- [Week 02](week-02/)
-- [Week 03](week-03/)
-- [Week 04](week-04/)
-
----
-
-## 📝 Assignments
-
-| Assignment | Topic | File |
-|------------|-------|------|
-| Cyber Kill Chain Report | Understanding the Cyber Kill Chain | [assignments/cyberkill_chain_report.md](assignments/cyberkill_chain_report.md) |
-| PTES Penetration Testing Report | Penetration Testing on RecruitX | [assignments/PTES_Penetration_Testing_Report.md](assignments/PTES_Penetration_Testing_Report.md) |
-
----
-
-## 🤝 Meetups & Events
-
-| Date       | Event Name      | Topics / Takeaways | File |
-|------------|-----------------|--------------------|------|
-| 2026-07-26 | Talent Talks    | Networking, Comm skills, Bash, SOC/NOC, APTs | [meetups/2026-07-26-talent-talks.md](meetups/2026-07-26-talent-talks.md) |
+```text
+                    🔐 CYBER LAB
+                         │
+              ┌──────────┼──────────┐
+              ↓          ↓          ↓
+          🧠 KNOWLEDGE  🧪 LABS   🛡️ DEFENSE
+              │          │          │
+              └──────────┼──────────┘
+                         ↓
+                   🔗 CONNECTIONS
+                         ↓
+                    🎯 PRACTICE
+                         ↓
+                   🧠 UNDERSTAND
+                         ↓
+                   💼 INTERVIEW
+                         ↓
+                  🛡️ REAL SKILLS
+```
