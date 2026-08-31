@@ -1,11 +1,40 @@
-# 🔐 Cybersecurity Class Notes
+# 🛡️ Cybersecurity Learning Dashboard
+
+```text
+                 CYBERSECURITY KNOWLEDGE BASE
+                       │
+       ┌───────────────┼───────────────┐
+       │               │               │
+   NETWORKING        RECON          SECURITY
+       │               │               │
+   TCP/UDP          OSINT           OWASP
+   DNS              Scanning        MITRE
+   DHCP             Enumeration     PAM
+   IP               Nmap            NGFW
+   NAT              Burp Suite      WAF
+       │               │               │
+       └───────────────┴───────────────┘
+                       ▼
+                 ATTACK SURFACE
+                       │
+                       ▼
+                  DEFENSE & SOC
+```
+
+## 📊 Learning Progress
+- **Sessions Completed:** 8
+- **Labs Completed:** 3
+- **Current Streak:** 🔥 4 Weeks
+
+---
+
 
 > **How to use:** Add a new row to the table each time you create a daily note.
 > Copy `_template.md` → rename to `YYYY-MM-DD.md` → drop it in the right week folder.
 
 ---
 
-## 📂 Structure
+## 📂 Repository Structure
 
 ```
 notes/
@@ -17,7 +46,7 @@ notes/
 
 ---
 
-## 📅 Notes Index
+## 📅 Session Index (Quick Navigation)
 
 | Date       | Week    | Session | Topics                        | File                               |
 |------------|---------|---------|-------------------------------|------------------------------------|
