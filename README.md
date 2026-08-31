@@ -27,6 +27,8 @@ notes/
 | 2026-08-14 | Week 01 | 04      | Burp Suite, Intercepting Proxy, FoxyProxy Setup, CA Certificate Installation | [week-01/2026-08-14.md](week-01/2026-08-14.md) |
 | 2026-08-17 | Week 02 | 05      | Wireless Pentesting, IoT Botnets, EMS, Radio Frequencies, Wi-Fi Tech, IEEE 802.11 | [week-02/2026-08-17.md](week-02/2026-08-17.md) |
 | 2026-08-20 | Week 02 | 06      | Path Traversal, Directory Traversal, Filter Bypass, Null Byte, URL Encoding | [week-02/2026-08-20.md](week-02/2026-08-20.md) |
+| 2026-08-27 | Week 03 | 07      | Events, Logs, and Incidents, PTES | [week-03/2026-08-27.md](week-03/2026-08-27.md) |
+| 2026-08-31 | Week 04 | 08      | Web Apps, HTTP, Network Security (Firewall, WAF, IDS/IPS), Honeypots | [week-04/2026-08-31.md](week-04/2026-08-31.md) |
 
 ---
 
@@ -34,6 +36,17 @@ notes/
 
 - [Week 01](week-01/)
 - [Week 02](week-02/)
+- [Week 03](week-03/)
+- [Week 04](week-04/)
+
+---
+
+## 📝 Assignments
+
+| Assignment | Topic | File |
+|------------|-------|------|
+| Cyber Kill Chain Report | Understanding the Cyber Kill Chain | [assignments/cyberkill_chain_report.md](assignments/cyberkill_chain_report.md) |
+| PTES Penetration Testing Report | Penetration Testing on RecruitX | [assignments/PTES_Penetration_Testing_Report.md](assignments/PTES_Penetration_Testing_Report.md) |
 
 ---
 
