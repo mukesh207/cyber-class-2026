@@ -22,8 +22,8 @@
 ```
 
 ## 📊 Learning Progress
-- **Sessions Completed:** 8
-- **Labs Completed:** 3
+- **Sessions Completed:** 9
+- **Labs Completed:** 4
 - **Current Streak:** 🔥 4 Weeks
 
 ---
@@ -58,6 +58,7 @@ notes/
 | 2026-08-20 | Week 02 | 06      | Path Traversal, Directory Traversal, Filter Bypass, Null Byte, URL Encoding | [week-02/2026-08-20.md](week-02/2026-08-20.md) |
 | 2026-08-27 | Week 03 | 07      | Events, Logs, and Incidents, PTES | [week-03/2026-08-27.md](week-03/2026-08-27.md) |
 | 2026-08-31 | Week 04 | 08      | Web Apps, HTTP, Network Security (Firewall, WAF, IDS/IPS), Honeypots | [week-04/2026-08-31.md](week-04/2026-08-31.md) |
+| 2026-09-01 | Week 04 | 09      | OWASP Top 10 (2025 vs 2021), SQL Injection, Oracle vs Non-Oracle, SQLmap, Dirbuster, Gobuster, Curl, Blind SQLi | [week-04/2026-09-01.md](week-04/2026-09-01.md) |
 
 ---
 
