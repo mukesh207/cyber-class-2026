@@ -1,0 +1,34 @@
+What is a kill chain in cybersecurity?
+A cyber kill chain is a security framework designed to identify and stop sophisticated cyberattacks by breaking down the attack into multiple stages. 
+This model helps security teams recognize, intercept, or prevent attacks before they impact an organization.
+
+The cyber kill chain's purpose is to bolster an organization's defenses against advanced persistent threats (APTs), also known as sophisticated cyberattacks. These threats commonly include:
+Malware
+Ransomware
+Trojan horses
+Phishing
+Other social engineering techniques
+
+Leveraging the kill chain model, especially when combined with threat intelligence, automation, and unified security workflows, enables proactive defense and faster incident response across all attack phases.
+
+The 7 stages of a cyber kill chain
+Is there an eighth step in the cyber kill chain?
+
+
+How can security solutions detect and prevent cyberattacks at various stages of the Cyber Kill Chain?
+
+
+How can the cyber kill chain improve security?
+
+The concept of a kill chain originated from military operations, where an enemy attack is identified, broken down into stages, and preventative measures are put in place. This military strategy inspired the original cybersecurity kill chain, which was initially created by Lockheed Martin in 2011.
+
+Weaknesses in the cyber kill chain
+Limited attack detection profile
+No insider threat detection
+
+Cyber Kill Chain Critiques
+The framework struggles with detecting insider threats, attacks using compromised credentials, and web-based attacks like XSS, SQL Injection, DoS/DDoS, and Zero-Day Exploits. The 2017 Equifax breach exemplifies these shortcomings.
+
+https://tryhackme.com/room/guidedpentestweb?vccr=1
+
+

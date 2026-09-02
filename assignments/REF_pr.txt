@@ -1,0 +1,70 @@
+1. Introduction to PTES
+2. Phase 1: Pre-engagement Interactions
+   - Scoping and Goals
+   - Rules of Engagement
+   - Communication and Emergency Contacts
+3. Phase 2: Intelligence Gathering
+   - OSINT and Covert Gathering
+   - Footprinting and Target Selection
+4. Phase 3: Threat Modeling
+   - Business Asset and Process Analysis
+   - Threat Agents and Motivation Analysis
+5. Phase 4: Vulnerability Analysis
+   - Active and Passive Testing
+   - Vulnerability Validation
+6. Phase 5: Exploitation
+   - Evasion and Countermeasures
+   - Precision Strikes and Tailored Exploits
+7. Phase 6: Post Exploitation
+   - Pillaging and Data Exfiltration
+   - Persistence and Lateral Movement
+   - Cleanup
+8. Phase 7: Reporting
+   - Executive Summary
+   - Technical Report
+9. Appendix
+   - PTES Technical Guidelines
+   - Tools Required
+
+
+PTES Technical Guidelines
+
+---
+
+### Example: PTES Mapping for TryHackMe "Guided Pentest: Web"
+
+1. Introduction to PTES
+   - Context: Applying the PTES framework to a web application penetration test scenario.
+
+2. Phase 1: Pre-engagement Interactions
+   - Scoping and Goals: Target is the TryHackMe IP. Goal is to gain RCE and retrieve flags.
+   - Rules of Engagement: Testing is limited to the provided target IP.
+   - Communication and Emergency Contacts: (Simulated) Acknowledging start of VM environment.
+
+3. Phase 2: Intelligence Gathering
+   - OSINT and Covert Gathering: Manually browsing the website.
+   - Footprinting and Target Selection: Running nmap for open ports and gobuster for hidden directories (/reset.php).
+
+4. Phase 3: Threat Modeling
+   - Business Asset and Process Analysis: Identifying the admin panel and password reset flow as critical targets.
+   - Threat Agents and Motivation Analysis: Acting as an external unauthenticated attacker.
+
+5. Phase 4: Vulnerability Analysis
+   - Active and Passive Testing: Interacting with the password reset feature and intercepting web requests.
+   - Vulnerability Validation: Confirming an Insecure Direct Object Reference (IDOR) flaw.
+
+6. Phase 5: Exploitation
+   - Evasion and Countermeasures: Bypassing normal authorization checks via IDOR.
+   - Precision Strikes and Tailored Exploits: Resetting admin password, logging in, and uploading a custom PHP reverse shell.
+
+7. Phase 6: Post Exploitation
+   - Pillaging and Data Exfiltration: Reading local flag files from the server.
+   - Persistence and Lateral Movement: Triggering the PHP shell to gain command-line connection.
+   - Cleanup: (Conceptually) Removing the uploaded PHP shell.
+
+8. Phase 7: Reporting
+   - Executive Summary: Summary of web application compromise via insecure password reset and unrestricted file uploads.
+   - Technical Report: Documenting nmap commands, HTTP requests, and reverse shell code.
+
+9. Appendix
+   - Tools Required: nmap, gobuster, Burp Suite, netcat, PHP reverse shell script.
