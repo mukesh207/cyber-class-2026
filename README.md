@@ -30,6 +30,7 @@ notes/
 | 2026-08-27 | Week 03 | 07      | Events, Logs, and Incidents, PTES | [week-03/2026-08-27.md](week-03/2026-08-27.md) |
 | 2026-08-31 | Week 04 | 08      | Web Apps, HTTP, Network Security (Firewall, WAF, IDS/IPS), Honeypots | [week-04/2026-08-31.md](week-04/2026-08-31.md) |
 | 2026-09-01 | Week 04 | 09      | OWASP Top 10 (2025 vs 2021), SQL Injection, Oracle vs Non-Oracle, SQLmap, Dirbuster, Gobuster, Curl, Blind SQLi | [week-04/2026-09-01.md](week-04/2026-09-01.md) |
+| 2026-09-02 | Week 04 | 10      | Path Traversal, SQLi Tasks, Broken Access Control, Broken Auth, Encoding/Decoding | [week-04/2026-09-02.md](week-04/2026-09-02.md) |
 
 ---
 
