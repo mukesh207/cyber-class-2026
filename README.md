@@ -32,6 +32,8 @@ notes/
 | 2026-09-01 | Week 04 | 09      | OWASP Top 10 (2025 vs 2021), SQL Injection, Oracle vs Non-Oracle, SQLmap, Dirbuster, Gobuster, Curl, Blind SQLi | [week-04/2026-09-01.md](week-04/2026-09-01.md) |
 | 2026-09-02 | Week 04 | 10      | Path Traversal, SQLi Tasks, Broken Access Control, Broken Auth, Encoding/Decoding | [week-04/2026-09-02.md](week-04/2026-09-02.md) |
 | 2026-09-03 | Week 04 | 11      | IPv4 vs IPv6, Subnetting, Subnet Masks, Network vs Host, CIDR Notation (/24, /16, /8), IP Calculations | [week-04/2026-09-03.md](week-04/2026-09-03.md) |
+| 2026-09-07 | Week 05 | 12      | Defense Architecture, Operations, Threat Analysis, Network Segmentation | [week-05/2026-09-07.md](week-05/2026-09-07.md) |
+| 2026-09-08 | Week 05 | 13      | Unified Kill Chain & Pivoting | [week-05/2026-09-08.md](week-05/2026-09-08.md) |
 
 ---
 
@@ -41,6 +43,7 @@ notes/
 - [Week 02](week-02/)
 - [Week 03](week-03/)
 - [Week 04](week-04/)
+- [Week 05](week-05/)
 
 ---
 
