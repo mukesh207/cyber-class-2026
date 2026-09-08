@@ -4,7 +4,6 @@
 
 `cyber-class-2026` is my personal cybersecurity learning repository, containing **daily class notes, practical lab walkthroughs, assignments, security concepts, and hands-on exercises**.
 
-It covers networking, reconnaissance, OSINT, penetration testing, web security, OWASP, vulnerability analysis, defensive security, and tools such as **Nmap, Burp Suite, SQLmap, Gobuster, and more**.
 
 > 📚 **Learning → Practicing → Documenting → Improving**
 
