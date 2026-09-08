@@ -1,5 +1,15 @@
 # 🔐 Cybersecurity Class Notes
 
+## 🔐 About This Repository
+
+`cyber-class-2026` is my personal cybersecurity learning repository, containing **daily class notes, practical lab walkthroughs, assignments, security concepts, and hands-on exercises**.
+
+It covers networking, reconnaissance, OSINT, penetration testing, web security, OWASP, vulnerability analysis, defensive security, and tools such as **Nmap, Burp Suite, SQLmap, Gobuster, and more**.
+
+> 📚 **Learning → Practicing → Documenting → Improving**
+
+---
+
 > **How to use:** Add a new row to the table each time you create a daily note.
 > Copy `_template.md` → rename to `YYYY-MM-DD.md` → drop it in the right week folder.
 
