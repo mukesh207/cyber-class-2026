@@ -53,6 +53,17 @@ notes/
 |------------|-------|------|
 | Cyber Kill Chain Report | Understanding the Cyber Kill Chain | [assignments/cyberkill_chain_report.md](assignments/cyberkill_chain_report.md) |
 | PTES Penetration Testing Report | Penetration Testing on RecruitX | [assignments/PTES_Penetration_Testing_Report.md](assignments/PTES_Penetration_Testing_Report.md) |
+| TryHackMe Blue | TryHackMe Blue Cheat Sheet | [assignments/Blue.md](assignments/Blue.md) |
+| VulnHub Sunset | VulnHub Sunset Cheat Sheet | [assignments/sunset.md](assignments/sunset.md) |
+
+---
+
+## 🔬 INE Labs
+
+| Lab Name | Topic | File |
+|----------|-------|------|
+| DNS Enumeration | DNS Enumeration Lab Walkthrough | [INE_labs/DNS_Enumeration/DNS_Enumeration_Lab_Walkthrough.md](INE_labs/DNS_Enumeration/DNS_Enumeration_Lab_Walkthrough.md) |
+| DNS and Vhosts | DNS and Vhosts Lab Notes | [INE_labs/DNSandVhosts/DNS_and_Vhosts_Lab_Notes.md](INE_labs/DNSandVhosts/DNS_and_Vhosts_Lab_Notes.md) |
 
 ---
 
