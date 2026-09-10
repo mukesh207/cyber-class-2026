@@ -1,1 +1,31 @@
+# Secrets / credentials
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.crt
+id_rsa
+id_ed25519
+
+# Credentials / dumps
+passwords.txt
+credentials.txt
+hashes.txt
+hash.txt
+secrets.txt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local lab material
 pentestgarage/
