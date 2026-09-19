@@ -4,6 +4,8 @@
 
 `cyber-class-2026` is my personal cybersecurity learning repository, containing **daily class notes, practical lab walkthroughs, assignments, security concepts, and hands-on exercises**.
 
+**Connect with me on LinkedIn:** [Mukesh Raja](https://www.linkedin.com/in/mukeshraja207/)
+
 
 > 📚 **Learning → Practicing → Documenting → Improving**
 
