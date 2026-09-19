@@ -381,12 +381,7 @@ Eventually the successful result is:
 Correct RADIUS secret: sweetness
 ```
 
-### Image Placeholder --- `brute.png`
-
-> **\[IMAGE PLACEHOLDER: Insert `brute.png` here\]**
->
-> Screenshot showing the `brute` script and the successful discovery of
-> the RADIUS secret.
+![Screenshot showing the `brute` script and the successful discovery of the RADIUS secret.](brute.png)
 
 ### Result
 
@@ -586,12 +581,7 @@ Eventually:
 Correct user password: chicago
 ```
 
-### Image Placeholder --- `brute2.png`
-
-> **\[IMAGE PLACEHOLDER: Insert `brute2.png` here\]**
->
-> Screenshot showing the `brute2` script and the successful discovery of
-> the `admin` password.
+![Screenshot showing the `brute2` script and the successful discovery of the `admin` password.](brute2.png)
 
 ### Result
 
@@ -802,12 +792,7 @@ The successful result is:
 Correct username: auditor password: ashlee
 ```
 
-### Image Placeholder --- `brute3.png`
-
-> **\[IMAGE PLACEHOLDER: Insert `brute3.png` here\]**
->
-> Screenshot showing the username/password dictionary attack and the
-> successful `auditor:ashlee` result.
+![Screenshot showing the username/password dictionary attack and the successful `auditor:ashlee` result.](brute3.png)
 
 ### Result
 
