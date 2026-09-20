@@ -2,6 +2,19 @@
 
 A collection of detailed walkthroughs and notes from my INE (eLearnSecurity) practical labs. These labs focus on offensive security, enumeration, defensive detection, and real-world scenarios.
 
+> ℹ️ **Note on Content:** The `.pdf` files found within these lab directories are the official lab manuals provided by INE. The `.md` files (walkthroughs) are my own personal notes, step-by-step solutions, and key takeaways created while completing the labs.
+
+## 📂 Typical Lab Structure
+
+Each individual lab folder generally follows this format:
+
+```text
+Lab_Name/
+├── Lab_Walkthrough.md     ← My personal detailed walkthrough and notes
+├── walkthrough-XXXX.pdf   ← Official INE lab manual/walkthrough
+└── *.png                  ← Associated screenshots and lab diagrams
+```
+
 ## 📚 Contents
 
 - [Reconnaissance & Enumeration](#-reconnaissance--enumeration)
