@@ -381,7 +381,7 @@ Eventually the successful result is:
 Correct RADIUS secret: sweetness
 ```
 
-![Screenshot showing the `brute` script and the successful discovery of the RADIUS secret.](brute.png)
+![Screenshot showing the `brute` script and the successful discovery of the RADIUS secret.](screenshots/brute.png)
 
 ### Result
 
@@ -581,7 +581,7 @@ Eventually:
 Correct user password: chicago
 ```
 
-![Screenshot showing the `brute2` script and the successful discovery of the `admin` password.](brute2.png)
+![Screenshot showing the `brute2` script and the successful discovery of the `admin` password.](screenshots/brute2.png)
 
 ### Result
 
@@ -792,7 +792,7 @@ The successful result is:
 Correct username: auditor password: ashlee
 ```
 
-![Screenshot showing the username/password dictionary attack and the successful `auditor:ashlee` result.](brute3.png)
+![Screenshot showing the username/password dictionary attack and the successful `auditor:ashlee` result.](screenshots/brute3.png)
 
 ### Result
 
