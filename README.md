@@ -48,7 +48,7 @@ Detailed navigation is available within each section's README.
 - 📁 **[INE Labs](./INE_labs/)** - Detailed practical lab walkthroughs from INE (Offensive & Defensive).
 - 📁 **[Assignments](./assignments/)** - CTF cheat sheets, PTES reports, and cyber kill chain analysis.
 - 📁 **[Weekly Notes](./week-01/)** - My daily study notes, categorized by week:
-  - [Week 01](./week-01/) | [Week 02](./week-02/) | [Week 03](./week-03/) | [Week 04](./week-04/) | [Week 05](./week-05/) | [Week 06](./week-06/)
+  - [Week 01](./week-01/) | [Week 02](./week-02/) | [Week 03](./week-03/) | [Week 04](./week-04/) | [Week 05](./week-05/) | [Week 06](./week-06/) | [Week 07](./week-07/)
 - 📁 **[Meetups & Events](./meetups/)** - Takeaways from cybersecurity community events.
 - 📁 **[Blue Team Labs](./blueteamlab/)** - Blue team exercises and investigations.
 - 📁 **[Pentest Garage](./pentestgarage/)** - Independent pentesting practice and challenges.

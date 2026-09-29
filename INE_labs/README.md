@@ -33,8 +33,10 @@ Lab_Name/
 - [Automating Windows Local Enumeration](./Automating_WindowsLocal_Enumeration/)
 - [Intro to EyeWitness](./Intro_to_EyeWitness/)
 - [Radius Recon: Dictionary Attacks](./Radius_Recon:_Dictionary_Attacks/)
+- [Service Discovery and Fingerprinting with Nmap](./Service%20Discovery%20and%20Fingerprinting%20with%20Nmap/)
 - [SNMP Recon: Basics](./SNMP_Recon:Basics/)
 - [SNMP Recon: Basics II](./SNMP_Recon:_Basics_II/)
+- [Squid Recon: Dictionary Attack](./Squid_Recon:_Dictionary_Attack/)
 
 ## 💻 System Security
 
