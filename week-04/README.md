@@ -1,8 +1,10 @@
-# Week 04 Notes
+# 📅 Week 04 Notes
 
-Daily class notes and study materials for Week 04.
+Daily class notes covering web security mechanics, SQL injection, IP addressing, subnetting, and network pivoting.
 
-## 📅 Session Log
+---
+
+## 📑 Session Log
 
 - [2026-08-31: Web Applications & Network Security Infrastructure](./2026-08-31.md)
 - [2026-09-01: Web Application Security: OWASP Top 10 & SQL Injection Deep-Dive](./2026-09-01.md)

@@ -1,7 +1,9 @@
-# Blue Team Labs
+# 🔍 Sysmon & Windows Log Analysis
 
-Practical exercises, log analysis, and malware investigations.
+Practical investigations into Sysmon event logs, process execution telemetry, and living-off-the-land binaries (LOLBins).
 
-## 📚 Contents
+---
 
-- [Malware Initial Access Analysis](./malware_initial_access_analysis.md)
+## 📚 Investigations
+
+- [Malware Initial Access Analysis](./malware_initial_access_analysis.md) — Detailed analysis of Sysmon Event ID 1 (Process Creation) and Event ID 3 (Network Connection) for initial access detection.

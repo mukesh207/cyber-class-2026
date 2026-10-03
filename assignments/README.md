@@ -1,20 +1,31 @@
-# Assignments & Projects
+# 📑 Assignments & Reports
 
-This section contains my completed assignments, penetration testing reports, and cheat sheets for various CTF machines.
-
-## 📚 Contents
-
-- [Reports & Methodology](#-reports--methodology)
-- [CTF Cheat Sheets](#-ctf-cheat-sheets)
+This section contains my completed course assignments, structured penetration testing reports, threat framework breakdowns, and CTF machine walkthrough cheat sheets.
 
 ---
 
-## 📄 Reports & Methodology
+## 📚 Contents
 
-- [PTES Penetration Testing Report](./PTES_Penetration_Testing_Report.md) - A structured report following the Penetration Testing Execution Standard.
-- [Cyber Kill Chain Report](./cyberkill_chain_report.md) - An analysis and breakdown of the Cyber Kill Chain.
+- [Reports & Framework Analysis](#-reports--framework-analysis)
+- [Network Reconnaissance & Walkthroughs](#-network-reconnaissance--walkthroughs)
+- [CTF Machine Cheat Sheets](#-ctf-machine-cheat-sheets)
 
-## 🏴‍☠️ CTF Cheat Sheets
+---
 
-- [TryHackMe: Blue](./Blue.md) - Walkthrough and cheat sheet for the 'Blue' machine.
-- [VulnHub: Sunset](./sunset.md) - Walkthrough and cheat sheet for the 'Sunset' machine.
+## 📄 Reports & Framework Analysis
+
+- [PTES Penetration Testing Report](./PTES_Penetration_Testing_Report.md) — A comprehensive report structured according to the Penetration Testing Execution Standard (PTES).
+- [Cyber Kill Chain Report](./cyberkill_chain_report.md) — In-depth analysis and technical breakdown of Lockheed Martin's Cyber Kill Chain framework.
+
+---
+
+## 🌐 Network Reconnaissance & Walkthroughs
+
+- [Local Network Reconnaissance: SSH & RDP Walkthrough](./local-network-reconnaissance-ssh-rdp-walkthrough.md) — Hands-on guide for enumerating SSH and RDP services across local subnet targets.
+
+---
+
+## 🏴‍☠️ CTF Machine Cheat Sheets
+
+- [TryHackMe: Blue](./Blue.md) — Walkthrough and attack cheatsheet targeting MS17-010 (EternalBlue) on Windows.
+- [VulnHub: Sunset](./sunset.md) — Step-by-step walkthrough and vulnerability escalation cheat sheet for VulnHub Sunset.

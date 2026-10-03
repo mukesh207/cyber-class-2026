@@ -5,7 +5,7 @@
 - [About](#-about)
 - [Learning Path](#-learning-path)
 - [Topics](#-topics)
-- [Tools](#-tools)
+- [Tools & Technologies](#-tools--technologies)
 - [Repository Structure](#-repository-structure)
 - [Current Focus](#-current-focus)
 - [Progress](#-progress)
@@ -22,40 +22,52 @@ The purpose of this repository is to document my journey, solidify my understand
 
 > 📚 **Learning → Practicing → Documenting → Improving**
 
+---
+
 ## 🛤️ Learning Path
 
 My journey covers both offensive (Red Team) and defensive (Blue Team) security, with a strong focus on practical, hands-on learning. I am progressing through fundamental networking and web architectures, moving into vulnerability assessment, exploitation, and finally enterprise defense and SOC operations.
 
+---
+
 ## 🎯 Topics
 
 - **Reconnaissance & Enumeration**: Network scanning, service enumeration, OSINT, and active reconnaissance.
-- **Web Application Security**: OWASP Top 10, SQLi, SSRF, SSTI, Path Traversal, and proxy architectures.
+- **Web Application Security**: OWASP Top 10, SQLi, SSRF, SSTI, Path Traversal, LFI/RFI, and proxy architectures.
 - **Network Security**: IP addressing, subnetting, pivoting, port forwarding, and wireless pentesting.
-- **System Security & Exploitation**: Privilege escalation, Active Directory fundamentals, and hash cracking.
-- **SOC & Detection**: Unified Kill Chain, telemetry, log anomaly detection, and forensics.
-- **DevSecOps**: Git repository exploration and recovery.
+- **System Security & Exploitation**: Privilege escalation, Active Directory fundamentals, NTLM relay, and hash cracking.
+- **SOC & Detection**: Unified Kill Chain, Sysmon log telemetry, SIEM (Kibana/Splunk), YARA rule creation, and log anomaly detection.
+- **DevSecOps**: Git repository exploration, credential recovery, and dangling object analysis.
 
-## 🛠️ Tools
+---
 
-- **Offensive**: Burp Suite, Nmap, EyeWitness, Socat, Metasploit, Hashcat
-- **Defensive**: Wireshark, SIEM tools, Windows/Linux native auditing
-- **General**: Git, Bash, Python
+## 🛠️ Tools & Technologies
+
+- **Offensive Tools**: Burp Suite, Nmap, EyeWitness, Socat, Metasploit, Hashcat, John the Ripper, Hydra
+- **Defensive & SIEM Tools**: Sysmon, Wireshark, Kibana, Splunk, Wazuh, YARA
+- **Infrastructure & Scripting**: Git, Bash, Python, Linux/Windows native auditing
+
+---
 
 ## 📂 Repository Structure
 
-Detailed navigation is available within each section's README.
+Detailed navigation and walkthrough indexes are available within each section's README.
 
-- 📁 **[INE Labs](./INE_labs/)** - Detailed practical lab walkthroughs from INE (Offensive & Defensive).
-- 📁 **[Assignments](./assignments/)** - CTF cheat sheets, PTES reports, and cyber kill chain analysis.
-- 📁 **[Weekly Notes](./week-01/)** - My daily study notes, categorized by week:
+- 📁 **[INE Labs](./INE_labs/)** — Detailed practical lab walkthroughs from INE (Offensive, Defensive, SIEM, & DevSecOps).
+- 📁 **[Assignments](./assignments/)** — CTF cheat sheets, PTES reports, network recon walkthroughs, and cyber kill chain analysis.
+- 📁 **[Weekly Notes](./week-01/)** — Daily class notes categorized by week:
   - [Week 01](./week-01/) | [Week 02](./week-02/) | [Week 03](./week-03/) | [Week 04](./week-04/) | [Week 05](./week-05/) | [Week 06](./week-06/) | [Week 07](./week-07/)
-- 📁 **[Meetups & Events](./meetups/)** - Takeaways from cybersecurity community events.
-- 📁 **[Blue Team Labs](./blueteamlab/)** - Blue team exercises and investigations.
-- 📁 **[Pentest Garage](./pentestgarage/)** - Independent pentesting practice and challenges.
+- 📁 **[Meetups & Events](./meetups/)** — Takeaways and notes from cybersecurity community events.
+- 📁 **[Blue Team Labs](./blueteamlab/)** — Blue team investigations, Sysmon log analysis, and phishing email triage.
+- 📁 **[Pentest Garage](./pentestgarage/)** — Independent pentesting practice, web exploitation, privilege escalation, and container labs.
+
+---
 
 ## 🔭 Current Focus
 
-Currently, I am deep-diving into **Advanced Web Application Vulnerabilities** (SSRF, SSTI, File Uploads) and integrating offensive techniques with **SOC detection mechanics**. I aim to understand not just how to exploit these vulnerabilities, but what telemetry they generate and how they can be reliably detected.
+Currently, I am deep-diving into **Advanced Web Application Vulnerabilities** (SSRF, SSTI, File Uploads) and integrating offensive techniques with **SOC detection mechanics**. I aim to understand not just how to exploit these vulnerabilities, but what telemetry they generate and how they can be reliably detected in enterprise SIEM platforms.
+
+---
 
 ## 📈 Progress
 

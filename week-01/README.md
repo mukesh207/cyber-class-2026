@@ -1,8 +1,10 @@
-# Week 01 Notes
+# 📅 Week 01 Notes
 
-Daily class notes and study materials for Week 01 of the cybersecurity class.
+Daily class notes, protocol architecture breakdowns, and foundational study materials for Week 01.
 
-## 📅 Session Log
+---
+
+## 📑 Session Log
 
 - [2026-08-11: Networking Protocols, Reconnaissance Architecture & Service Enumeration](./2026-08-11.md)
 - [2026-08-12: Session Notes: Anonymity, OpSec, Security Frameworks & Enterprise Defense](./2026-08-12.md)

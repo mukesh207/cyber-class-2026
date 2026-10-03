@@ -1,8 +1,10 @@
-# Week 02 Notes
+# 📅 Week 02 Notes
 
-Daily class notes and study materials for Week 02.
+Daily class notes and study materials covering wireless communications, injection mechanics, and path traversal vulnerabilities.
 
-## 📅 Session Log
+---
+
+## 📑 Session Log
 
 - [2026-08-17: Wireless Pentesting & Radio Frequency (RF) Foundations](./2026-08-17.md)
 - [2026-08-20: Path Traversal & OS Command Injection: Mechanics, Exploitation, & Defense](./2026-08-20.md)
