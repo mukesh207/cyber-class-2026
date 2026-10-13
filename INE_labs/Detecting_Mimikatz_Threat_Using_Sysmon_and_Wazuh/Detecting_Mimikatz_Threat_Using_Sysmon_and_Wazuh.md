@@ -108,7 +108,7 @@ Two configuration issues were encountered:
 
 The duplicate ID was addressed by assigning distinct IDs to custom rules. The group name was checked against the installed ruleset.
 
-**Intended rule IDs:**
+**Example rule IDs from the documented rule design (not all are confirmed by the screenshot):**
 
 | Rule ID | Detection intent | Expected Sysmon event |
 |---|---|---|
@@ -116,7 +116,7 @@ The duplicate ID was addressed by assigning distinct IDs to custom rules. The gr
 | `100011` | Matching source process creates a remote thread | Event ID 8 |
 | `100012` | Matching source process accesses another process | Event ID 10 |
 
-> **Reproducibility note:** The captured dashboard screenshot shows alerts with IDs `100000` and `100012`. It does not show Rule `100011`. Confirm the final contents of `local_rules.xml` before publishing the rule configuration, so the documentation matches the configuration that generated the evidence.
+> **Evidence note:** The captured dashboard screenshot shows alerts with IDs `100000` and `100012`. It does not show Rule `100011`. The example rule block below documents the intended detection logic; do not assume the `100010` example ID exactly matches the final rule that generated the dashboard alert labelled `100000`. Verify `local_rules.xml` if reproducing this lab.
 
 Example rule structure (confirm field and group names against the installed ruleset before use):
 
@@ -225,18 +225,20 @@ Use `wazuh-analysisd -t` before restarting the manager. Investigate warnings rat
 
 This lab provided hands-on practice with Windows endpoint telemetry, Sysmon configuration, Wazuh agent integration, custom rule troubleshooting, and SOC alert investigation. The captured dashboard confirmed two alerts associated with the configured process-creation and process-access detections. The main lesson is to validate rules against the installed Wazuh ruleset and interpret alerts using event context rather than treating a single alert as definitive proof of compromise.
 
-## 10. Evidence
+## 10. Evidence included in this package
 
-Place screenshots captured from your own INE run in an `evidence/` directory. Suggested filenames:
+The `evidence/` folder contains screenshots captured during the lab. The images document the INE lab page, Wazuh dashboard, manager environment, Windows agent configuration, and Sysmon event-channel configuration.
 
-```text
-evidence/
-├── 01-wazuh-security-events-overview.png
-├── 02-process-creation-alert.png
-└── 03-process-access-alert.png
-```
+| File | What it shows |
+|---|---|
+| `evidence/01-ine-lab-completed.png` | INE Skill Dive lab page marked completed |
+| `evidence/02-wazuh-security-events-dashboard.png` | Wazuh Security Events dashboard showing the observed custom alerts |
+| `evidence/03-wazuh-manager-environment.png` | SOC machine/dashboard environment and terminal context |
+| `evidence/04-windows-agent-manager-config.png` | Windows-side Wazuh agent configuration context |
+| `evidence/05-windows-sysmon-event-channel-config.png` | Sysmon Operational event-channel collection entry |
+| `evidence/06-soc-manager-address-context.png` | Lab SOC machine address/context screenshot |
 
-The overview screenshot captured during this run shows Rule IDs `100000` and `100012`. Capture the expanded alert views separately for field-level evidence. Redact sensitive details before publishing.
+The dashboard evidence shows Rule IDs `100000` and `100012`. It does not show a triggered Rule `100011`, and this package does not claim that the remote-thread rule fired. Review screenshots before publishing them publicly and redact any information your lab provider considers sensitive.
 
 ## 11. References
 

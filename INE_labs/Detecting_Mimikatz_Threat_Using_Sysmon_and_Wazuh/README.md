@@ -1,18 +1,30 @@
 # Detecting Mimikatz Threat Using Sysmon and Wazuh
 
-Completed INE Blue Team / SOC lab documentation.
+**Lab:** INE Skill Dive — Detecting Mimikatz Threat Using Sysmon and Wazuh  
+**Focus:** Blue Team / SOC / Windows telemetry / Sysmon / Wazuh custom detection  
+**Status:** Completed in the INE lab environment
 
-## Contents
-- `Detecting_Mimikatz_Threat_Using_Sysmon_and_Wazuh.md` — detailed walkthrough, configuration notes, observed results, troubleshooting, and defensive recommendations.
-- `evidence/` — add screenshots captured during your own lab run here.
+## Package contents
 
-## Evidence screenshots
-Add your screenshots using these suggested filenames:
-- `evidence/01-wazuh-security-events-overview.png`
-- `evidence/02-process-creation-alert.png`
-- `evidence/03-process-access-alert.png`
+- `Detecting_Mimikatz_Threat_Using_Sysmon_and_Wazuh.md` — complete walkthrough, architecture, configuration steps, troubleshooting, observed alerts, defensive recommendations, and references.
+- `evidence/` — six screenshots captured during the lab.
+- `config-examples/README.md` — notes on safely reproducing the configuration examples.
 
-Only include evidence you actually captured. Redact credentials or sensitive data before publishing.
+## Evidence highlights
 
-## Included screenshot
-- `evidence/04-ine-lab-completed.png` — INE lab page showing the lab marked Completed.
+- INE lab completion page.
+- Wazuh Security Events dashboard with observed Rule IDs `100000` and `100012` (level 12).
+- Windows agent and Sysmon event-channel configuration context.
+- SOC machine environment screenshots.
+
+**Accuracy note:** The dashboard screenshot confirms alerts for Rule IDs `100000` and `100012`. It does not show Rule `100011`; the report does not claim that remote-thread detection triggered. Example rule IDs and final observed alert IDs are kept distinct.
+
+## Before publishing
+
+1. Review the screenshots for lab-sensitive information.
+2. Redact any credentials, tokens, or details prohibited by the lab provider.
+3. Make sure the GitHub version of the report includes the same evidence files, or update image links to match your repository structure.
+
+## Repository link
+
+https://github.com/mukesh207/cyber-class-2026/tree/main/INE_labs/Detecting_Mimikatz_Threat_Using_Sysmon_and_Wazuh
