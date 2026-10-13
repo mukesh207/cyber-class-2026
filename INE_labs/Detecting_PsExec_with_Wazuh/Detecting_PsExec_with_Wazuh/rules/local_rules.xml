@@ -1,0 +1,46 @@
+<!--
+Lab rules for PsExec detection.
+Review field names and regex behavior against decoded events in your Wazuh version.
+Place these rules inside a valid <group> structure in local_rules.xml and validate before restart.
+-->
+<group name="windows,sysmon,">
+  <rule id="160010" level="10">
+    <if_group>windows,sysmon</if_group>
+    <field name="win.eventdata.eventType" type="pcre2">SetValue</field>
+    <field name="win.eventdata.targetObject" type="pcre2">\\\\SOFTWARE\\\\Sysinternals\\\\PsExec\\\\EulaAccepted</field>
+    <options>no_full_log</options>
+    <description>PsExec EULA registry value activity on $(win.system.computer)</description>
+    <mitre><id>T1112</id></mitre>
+  </rule>
+
+  <rule id="160011" level="10">
+    <if_group>windows,sysmon</if_group>
+    <field name="win.eventdata.targetObject" type="pcre2">HKLM\\\\System\\\\CurrentControlSet\\\\Services\\\\PSEXESVC</field>
+    <field name="win.eventdata.eventType" type="pcre2">^SetValue$</field>
+    <field name="win.eventdata.user" type="pcre2">NT AUTHORITY\\\\SYSTEM</field>
+    <options>no_full_log</options>
+    <description>PsExec service registry activity as $(win.eventdata.user) on $(win.system.computer)</description>
+    <mitre><id>T1543.003</id></mitre>
+  </rule>
+
+  <rule id="160012" level="10">
+    <if_group>windows,sysmon</if_group>
+    <field name="win.eventdata.targetObject" type="pcre2">HKLM\\\\System\\\\CurrentControlSet\\\\Services\\\\PSEXESVC</field>
+    <field name="win.eventdata.eventType" type="pcre2">^DeleteKey$</field>
+    <field name="win.eventdata.user" type="pcre2">NT AUTHORITY\\\\SYSTEM</field>
+    <options>no_full_log</options>
+    <description>PsExec service registry-key deletion as $(win.eventdata.user) on $(win.system.computer)</description>
+    <mitre><id>T1543.003</id></mitre>
+  </rule>
+
+  <rule id="160013" level="10">
+    <if_group>windows,sysmon</if_group>
+    <field name="win.eventdata.eventType" type="pcre2">CreatePipe</field>
+    <field name="win.eventdata.image" type="pcre2">\\\\PSEXESVC.exe</field>
+    <match type="pcre2">(?i)(PSEXESVC|stdin|stdout|stderr)</match>
+    <field name="win.eventdata.user" type="pcre2">NT AUTHORITY\\\\SYSTEM</field>
+    <options>no_full_log</options>
+    <description>PsExec named-pipe activity as $(win.eventdata.user) on $(win.system.computer)</description>
+    <mitre><id>T1570</id></mitre>
+  </rule>
+</group>

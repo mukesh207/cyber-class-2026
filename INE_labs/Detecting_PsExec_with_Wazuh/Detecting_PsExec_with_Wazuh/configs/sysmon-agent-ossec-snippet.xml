@@ -1,0 +1,5 @@
+<!-- Add this block inside the existing <ossec_config> root in ossec.conf. -->
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
