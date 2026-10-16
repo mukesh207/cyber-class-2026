@@ -56,7 +56,7 @@ Detailed navigation and walkthrough indexes are available within each section's 
 - 📁 **[INE Labs](./INE_labs/)** — Detailed practical lab walkthroughs from INE (Offensive, Defensive, SIEM, & DevSecOps).
 - 📁 **[Assignments](./assignments/)** — CTF cheat sheets, PTES reports, network recon walkthroughs, and cyber kill chain analysis.
 - 📁 **[Weekly Notes](./week-01/)** — Daily class notes categorized by week:
-  - [Week 01](./week-01/) | [Week 02](./week-02/) | [Week 03](./week-03/) | [Week 04](./week-04/) | [Week 05](./week-05/) | [Week 06](./week-06/) | [Week 07](./week-07/)
+  - [Week 01](./week-01/) | [Week 02](./week-02/) | [Week 03](./week-03/) | [Week 04](./week-04/) | [Week 05](./week-05/) | [Week 06](./week-06/) | [Week 07](./week-07/) | [Week 08](./week-08/)
 - 📁 **[Meetups & Events](./meetups/)** — Takeaways and notes from cybersecurity community events.
 - 📁 **[Blue Team Labs](./blueteamlab/)** — Blue team investigations, Sysmon log analysis, and phishing email triage.
 - 📁 **[Pentest Garage](./pentestgarage/)** — Independent pentesting practice, web exploitation, privilege escalation, and container labs.
