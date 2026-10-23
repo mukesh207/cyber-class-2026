@@ -37,7 +37,7 @@ Each question is structured with:
 | **12** | MAC Flooding Attack | Network Sniffing & Layer 2 Security | CAM Table Exhaustion / Switch Fail-Open to Hub Mode |
 | **13** | iOS Jailbreaking Taxonomy | Mobile Platform Security | Semi-Untethered Jailbreaking (On-Device Re-jailbreak) |
 | **14** | Password Manager Autofill | Client-Side Security & Identity | Missing Origin / Domain Validation |
-| **15** | Wireless IPS (WIPS) | Wireless Network Security | Aruba RFProtect Air Monitoring & Containment |
+| **15** | Wireless IPS (WIPS) | Wireless Network Security | Cisco Adaptive Wireless IPS (MSE Aggregation & Passive/Time-Sliced Scanning) |
 | **16** | WAF Evasion Strategy | Web Application Defense & Evasion | Normalization Impedance Mismatch / Unicode Encoding |
 | **17** | ARP Spoofing | Network Sniffing & Layer 2 Attacks | Gratuitous ARP Cache Poisoning (MitM) |
 | **18** | SAML Signature Wrapping | Identity & Access Management (SSO) | XML Signature Wrapping (SSW) Attack |
@@ -573,19 +573,81 @@ In modern web browser architecture, security is anchored in the **Same-Origin Po
 > **Question:** You are an ethical hacker at Sentinel Cyberworks, engaged to assess the wireless defenses of HarborTrust Bank in Portland, Oregon. During your assessment, the security team shows you a production system that continuously places selected APs into a passive scan mode, aggregates alarms from multiple wireless controllers into a central engine for forensic storage, and can automatically apply countermeasures (for example, time-sliced channel scanning and remote configuration changes) across the campus when it classifies a nearby device as malicious. Based on the described capabilities, which Wi-Fi security solution is this most consistent with?
 >
 > - [ ] A. Fern WiFi Cracker
-> - [ ] B. Cisco Adaptive Wireless IPS
+> - [x] **B. Cisco Adaptive Wireless IPS**
 > - [ ] C. WatchGuard Wi-Fi Cloud WIPS
-> - [x] **D. RFProtect**
+> - [ ] D. RFProtect
 >
-> **Correct Answer:** **D. RFProtect**
+> **Correct Answer:** **B. Cisco Adaptive Wireless IPS**
 
-#### 🔬 Deep Technical Mechanics
-In enterprise wireless architectures, **Aruba (HPE)** packages its advanced Wireless Intrusion Detection and Prevention System under the product name **RFProtect**.
-- RFProtect turns standard Aruba Access Points into dedicated **Air Monitors (AMs)** or hybrid **Spectrum Monitors (SMs)**.
-- It provides:
-  1. Continuous over-the-air monitoring across 2.4 GHz and 5 GHz bands without dropping client connections.
-  2. Automated rogue AP classification, containment (injecting 802.11 deauthentication frames to sever client-rogue links), and ad-hoc network suppression.
-  3. Centralized forensic capture and aggregation into Aruba Mobility Controllers.
+#### 🔬 Deep Technical Mechanics: Cisco Adaptive wIPS Multi-Tier Architecture
+Enterprise-grade **Wireless Intrusion Prevention Systems (WIPS)** protect the physical RF airspace from rogue access points, Evil Twins, deauthentication floods, and unauthorized ad-hoc connections. 
+
+The scenario describes the exact hallmark operational model of **Cisco Adaptive Wireless IPS (wIPS / aWIPS)**, which is uniquely characterized by a **three-tier hierarchical architecture**:
+
+```
++---------------------------------------------------------------------------------------------------+
+|                         CISCO ADAPTIVE WIRELESS IPS (wIPS) ARCHITECTURE                           |
++---------------------------------------------------------------------------------------------------+
+|                                                                                                   |
+|  +---------------------------------------------------------------------------------------------+  |
+|  |                TIER 3: Central Aggregation & Forensic Engine (Cisco MSE / Catalyst Center)  |  |
+|  |                - Aggregates security events & alarms across all enterprise WLCs             |  |
+|  |                - Dedicated Forensic Storage: Archives over-the-air PCAPs & attack traces    |  |
+|  |                - Coordinates automated cross-campus countermeasures                         |  |
+|  +----------------------------------------------+----------------------------------------------+  |
+|                                                 ^ NMSP (TCP Port 16113) / Telemetry Stream         |
+|                         +-----------------------+-----------------------+                         |
+|                         |                                               |                         |
+|  +----------------------+----------------------+ +----------------------+----------------------+  |
+|  |  TIER 2: Wireless LAN Controller (WLC 1)     | |  TIER 2: Wireless LAN Controller (WLC 2)     |  |
+|  |  - Manages North Campus Access Points        | |  - Manages South Campus Access Points        |  |
+|  |  - Correlates local RF events                | |  - Correlates local RF events                |  |
+|  +----------------------+----------------------+ +----------------------+----------------------+  |
+|                         ^ CAPWAP Control / Data                         ^ CAPWAP Control / Data   |
+|            +------------+------------+                     +------------+------------+            |
+|            |                         |                     |                         |            |
+|  +---------+---------+     +---------+---------+ +---------+---------+     +---------+---------+  |
+|  | TIER 1: Monitor AP|     | TIER 1: Local AP  | | TIER 1: Monitor AP|     | TIER 1: Local AP  |  |
+|  | (Dedicated Sensor)|     | (Time-Sliced ELM) | | (Dedicated Sensor)|     | (Time-Sliced ELM) |  |
+|  | - 100% Passive    |     | - Serves clients  | | - 100% Passive    |     | - Serves clients  |  |
+|  |   Scan Mode       |     | - Dwells off-chan | | - 100% Passive    |     | - Dwells off-chan |  |
+|  | - No client data  |     |   on time-slice   | | - No client data  |     |   on time-slice   |  |
+|  +-------------------+     +-------------------+ +-------------------+     +-------------------+  |
++---------------------------------------------------------------------------------------------------+
+```
+
+##### 1. AP Operational Modes: Passive vs. Time-Sliced Scanning
+Cisco Adaptive wIPS utilizes two complementary radio inspection modes to monitor the RF spectrum without requiring a 100% dedicated hardware sensor overlay:
+- **Dedicated Monitor Mode (Passive Scan Mode):** The Access Point radio completely disassociates from serving standard client traffic. It is locked into a **passive scan mode**, cycling through all regulatory 2.4 GHz and 5 GHz channels (and 6 GHz in Wi-Fi 6E) listening for 802.11 management/control frames, rogue beacons, RF jamming, and protocol anomalies.
+- **Enhanced Local Mode (ELM / Time-Sliced Scanning):** Serving APs deliver high-throughput data to regular end-user clients on their assigned home channel. Concurrently, the radio employs **time-sliced scanning**: during tiny, scheduled idle intervals (e.g., several milliseconds), the radio momentarily jumps off-channel to scan alternate frequencies for threats before returning to the serving channel, minimizing client jitter while expanding intrusion detection coverage across the campus.
+
+##### 2. Multi-Controller Alarm Aggregation & Central Forensic Storage
+- Standard lightweight APs lack the memory and compute capacity to store packet traces or perform cross-building triangulation.
+- Raw threat telemetry is forwarded via **CAPWAP** tunnels to respective **Wireless LAN Controllers (WLCs)**.
+- Multiple campus WLCs securely stream these threat feeds over the **Network Mobility Services Protocol (NMSP)** (TCP port 16113) to the **Cisco Mobility Services Engine (MSE)** (or Cisco Catalyst Center).
+- The central engine performs **threat de-duplication, automated alarm correlation, and dedicated forensic storage**—archiving raw over-the-air packet captures (PCAP) and RF event logs for forensic incident reconstruction and regulatory compliance (e.g., PCI-DSS Requirement 11.1).
+
+##### 3. Automated Campus Countermeasures
+Upon classifying a nearby device as malicious (e.g., Rogue AP with wired network connectivity, unauthorized ad-hoc client, or Karma/Pineapple attack):
+- The central engine instructs surrounding APs to alter their radio duty cycles (e.g., intensifying **time-sliced scanning** around the threat location).
+- The system pushes **remote configuration changes** (adjusting Radio Resource Management [RRM] power levels, triggering client exclusion lists, or activating over-the-air deauthentication frame containment).
+
+---
+
+#### 🥊 Exhaustive Distractor Teardown
+
+| Option | Vendor / Type | Primary Architectural Mismatch | Why It Fails |
+| :--- | :--- | :--- | :--- |
+| **A. Fern WiFi Cracker** | Offensive Cracking Suite | Completely wrong tool category | An open-source Python/Qt tool written for wireless penetration testing and credential recovery (WEP/WPA cracking, WPS bruteforce). It is an **offensive attack tool**, not an enterprise defensive WIPS. |
+| **B. Cisco Adaptive Wireless IPS** | **Cisco Enterprise WIPS** | **PERFECT MATCH** | **Correct.** Uniquely implements the 3-tier model where **multiple WLCs feed alarms to a central engine (MSE / Catalyst Center) for forensic storage**, dynamically balancing **passive monitor mode** and **time-sliced scanning (ELM)** with campus-wide automated countermeasures. |
+| **C. WatchGuard Wi-Fi Cloud WIPS** | WatchGuard (ex-Mojo / AirTight) | Cloud-managed, controller-less architecture | WatchGuard WIPS (rooted in Mojo Networks / AirTight technology) operates on a **controller-less cloud model**. APs communicate directly via secure HTTPS/TLS to the WatchGuard Wi-Fi Cloud platform. There are **no physical on-premises wireless controllers** to aggregate alarms from. |
+| **D. RFProtect** | HPE Aruba Networking | Controller-resident software license, not an external multi-controller aggregator engine | **RFProtect** is an ArubaOS software license module (`LIC-RFP`) running **on the Aruba Mobility Controller itself**. The controller natively executes the WIPS analysis. Aruba's AP modes are termed **Air Monitors (AMs)** or **Spectrum Monitors (SMs)**. The scenario's explicit multi-tier phrasing (*"aggregates alarms from multiple wireless controllers into a central engine for forensic storage"*) points to Cisco's MSE-based WIPS topology. |
+
+---
+
+#### 🛡️ Real-Time Technical Scenario: Pentesting & SOC Defense
+- **The Pentester Perspective (Red Team):** During an authorized wireless assessment at HarborTrust Bank, you deploy a Wi-Fi Pineapple broadcasting an Evil Twin AP. Within 90 seconds, your Rogue AP is detected. The Cisco wIPS automatically instructs nearest client-serving APs to step up time-sliced scanning on your operational channel, logs your BSSID/MAC, triggers a remote port-suppression or over-the-air 802.11 deauthentication barrage, and uploads an automated 10-second PCAP capture to the MSE forensic repository.
+- **The SOC Analyst Perspective (Blue Team):** The central MSE engine correlates alarms from WLC-North and WLC-South, identifying that the rogue signal is detected across two separate controller zones. Rather than triggering multiple uncoordinated alerts, the MSE merges the events into a single actionable incident with physical floor-plan triangulation coordinates and immediate PCAP availability for forensic triage.
 
 ---
 
