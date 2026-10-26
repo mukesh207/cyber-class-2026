@@ -3,7 +3,7 @@
 > **Course:** Certified Ethical Hacker (CEH v13) / Threat Intelligence & SOC Engineering  
 > **Topic:** Module 02 — Passive & Active Reconnaissance, OSINT Frameworks, Specialized Search Engines, DNS Interrogation, Network & Email Forensics, Tooling Automation, Defensive Countermeasures & SOC Detection Engineering  
 > **Date:** 2026-10-23  
-> **Navigation:** [🏠 CEH Dashboard](./README.md) | [⬅️ Module 01: Introduction to Ethical Hacking](./mod-01-introduction-to-ethical-hacking.md) | [➡️ Module 03: Scanning Networks (Upcoming)](#) | [Dashboard](../README.md)
+> **Navigation:** [🏠 CEH Dashboard](./README.md) | [⬅️ Module 01: Introduction to Ethical Hacking](./mod-01-introduction-to-ethical-hacking.md) | [➡️ Module 03: Scanning Networks](./mod-03-scanning-networks.md) | [Dashboard](../README.md)
 
 ---
 
@@ -963,4 +963,4 @@ Test your mastery of the concepts covered in this module. Answer these scenario 
 
 ---
 
-*End of Module 02 Study Notes. Continue to Module 03: Scanning Networks.*
+*End of Module 02 Study Notes. Continue to [Module 03: Scanning Networks](./mod-03-scanning-networks.md).*

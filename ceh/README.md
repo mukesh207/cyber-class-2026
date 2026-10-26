@@ -10,8 +10,8 @@ Comprehensive technical study notes for the EC-Council **Certified Ethical Hacke
 | :---: | :--- | :---: | :--- | :---: |
 | **01** | **Introduction to Ethical Hacking** | ✅ Completed | CIA Triad, Security Frameworks, Threat Attribution, AI in Pentesting, Defense-in-Depth, CVSS | [View Notes](./mod-01-introduction-to-ethical-hacking.md) |
 | **02** | **Footprinting and Reconnaissance** | ✅ Completed | Passive/Active OSINT, 24 Search Engines, DNS Interrogation, AXFR, Email Header Forensics, Splunk Detection | [View Notes](./mod-02-footprinting-and-reconnaissance.md) |
-| **03** | **Scanning Networks** | ⏳ Next Up | Host Discovery, Port Scanning Mechanics (SYN, FIN, NULL, Xmas), Nmap Scripting Engine (NSE), IDS Evasion | *Queued* |
-| **04** | **Enumeration** | 📋 Planned | NetBIOS, SNMP, LDAP, NTP, SMTP, RPC, DNS Zone Enumeration, Active Directory Initial Probing | *Planned* |
+| **03** | **Scanning Networks** | ✅ Completed | Host Discovery, TCP Flags/Handshakes, Port Scanning (SYN, FIN, Xmas, Idle Zombie), Fragmentation, Routing Manipulation, Proxy Chaining, Banner Grabbing | [View Notes](./mod-03-scanning-networks.md) |
+| **04** | **Enumeration** | ⏳ Next Up | NetBIOS, SNMP, LDAP, NTP, SMTP, RPC, DNS Zone Enumeration, Active Directory Initial Probing | *Queued* |
 | **05** | **Vulnerability Analysis** | 📋 Planned | Vulnerability Scoring (CVSS v4), Nessus/OpenVAS scanning, False Positive Validation | *Planned* |
 | **06** | **System Hacking** | 📋 Planned | Password Cracking (Hashcat, John), Privilege Escalation (Linux/Windows), Steganography, Log Clearing | *Planned* |
 | **07** | **Malware Threats** | 📋 Planned | Trojans, Backdoors, Polymorphic Viruses, Ransomware, Static & Dynamic Analysis, YARA | *Planned* |
@@ -65,6 +65,20 @@ A dedicated preparation area equipped with EC-Council exam-style question banks,
 - **Automation & Tooling:** Maltego, Recon-ng, FOCA, theHarvester, SpiderFoot, and a custom Python reconnaissance automation script.
 - **SOC Detection & Defense:** Split-Horizon DNS, BIND ACL configuration, and Splunk SIEM detection rules for unauthorized AXFR requests and NXDOMAIN enumeration spikes.
 - **Real-Time Technical Scenario & Knowledge Check:** End-to-end Red Team recon vs. Blue Team SOC triage with 7 scenario-based validation questions.
+
+### 📗 [Module 03: Scanning Networks](./mod-03-scanning-networks.md)
+- **Scanning Methodology & Architecture:** The 7-step scanning sequence; active vs. passive discovery; why RFC determinism enables network scanning.
+- **TCP/IP Flag & Handshake Mechanics:** Complete bitwise breakdown of all 9 TCP control flags (SYN, ACK, FIN, RST, PSH, URG, ECE, CWR, NS); mathematical mechanics of the 3-way handshake ($ISN$, $Ack = ISN + 1$) and graceful 4-way teardown vs. abrupt RST.
+- **Protocol Weaponization & Attacks:** TCP SYN Flooding (TCB and backlog queue exhaustion, SYN cookie cryptography), TCP Reset (RST) hijacking, and stateful firewall table exhaustion (ACK/PSH+ACK floods against `conntrack`).
+- **Scanning Tool Engines & Taxonomy:** Architecture and workflows of Nmap (raw socket timing T0-T5), Hping3 (custom header crafting), Masscan (10M+ pps asynchronous kernel bypass), ZMap, Netcat, and Unicornscan.
+- **Host Discovery Probes:** Why modern ICMP fails against endpoint firewalls; ARP ping (`-PR`), TCP SYN Ping (`-PS`), TCP ACK Ping (`-PA`), and UDP ping (`-PU`).
+- **Port Scanning Taxonomy:** TCP Connect (`-sT`), Stealth SYN (`-sS`), RFC 793 Inverse Scans (FIN, NULL, Xmas), ACK firewall mapping (`-sA`), and Window scanning (`-sW`), including the Microsoft Windows RFC non-compliance flaw.
+- **The Idle Scan (Zombie Scan):** Deep 3-phase mathematical walkthrough of IP Identification (IPID) global counter abuse for 100% blind attribution scanning.
+- **IDS/Firewall Evasion:** IP fragmentation fields (MF, DF, Fragment Offset), Tiny Fragment and Overlapping Fragment attacks; Strict/Loose Source Routing (SSRR/LSRR) manipulation.
+- **Proxy Chaining & Anonymizers:** Forward vs. Reverse vs. Transparent proxies; SOCKS4 vs. SOCKS5 mechanics; `Proxychains-ng` configuration (Strict, Dynamic, Random) and resolving the raw socket proxy limitation.
+- **Banner Grabbing & Fingerprinting:** Active raw socket interrogation (`nc`, `curl`, `openssl`, `nmap -sV`) vs. passive header sniffing (`p0f`, TTL and Window Size heuristic matrices).
+- **SOC Detection & Defense:** Snort/Suricata rules for Xmas/NULL scans and SYN sweeps; Splunk SIEM SPL correlation for abnormal RST/SYN ratios; Linux kernel hardening (`sysctl` syncookies, source-route rejection).
+- **Real-Time Technical Scenario & Troubleshooting:** Red Team DMZ assessment vs. SOC response; diagnosing failed inverse scans, proxychains raw leaks, and noisy idle zombies.
 
 ---
 
