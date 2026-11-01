@@ -8,7 +8,7 @@
 - [Tools & Technologies](#-tools--technologies)
 - [Repository Structure](#-repository-structure)
 - [Current Focus](#-current-focus)
-- [Progress](#-progress)
+- [Progress & Key Milestones](#-progress--key-milestones)
 
 ---
 
@@ -26,26 +26,28 @@ The purpose of this repository is to document my journey, solidify my understand
 
 ## 🛤️ Learning Path
 
-My journey covers both offensive (Red Team) and defensive (Blue Team) security, with a strong focus on practical, hands-on learning. I am progressing through fundamental networking and web architectures, moving into vulnerability assessment, exploitation, and finally enterprise defense and SOC operations.
+My journey covers both offensive (Red Team) and defensive (Blue Team) security, with a strong focus on practical, hands-on learning. I am progressing through fundamental networking and web architectures, moving into vulnerability assessment, exploitation, and enterprise defense, SIEM/SOC engineering, and post-quantum cryptanalysis.
 
 ---
 
 ## 🎯 Topics
 
-- **Reconnaissance & Enumeration**: Network scanning, service enumeration, OSINT, and active reconnaissance.
-- **Web Application Security**: OWASP Top 10, SQLi, SSRF, SSTI, Path Traversal, LFI/RFI, and proxy architectures.
-- **Network Security**: IP addressing, subnetting, pivoting, port forwarding, and wireless pentesting.
-- **System Security & Exploitation**: Privilege escalation, Active Directory fundamentals, NTLM relay, and hash cracking.
-- **SOC & Detection**: Unified Kill Chain, Sysmon log telemetry, SIEM (Kibana/Splunk), YARA rule creation, and log anomaly detection.
-- **DevSecOps**: Git repository exploration, credential recovery, and dangling object analysis.
+- **Reconnaissance & Enumeration**: Network scanning, service enumeration, OSINT, and active reconnaissance across 24 search engines.
+- **Web Application Security**: OWASP Top 10, the full catalog of 35 web attacks, SQLi/NoSQLi, SSRF, SSTI, Path Traversal, and proxy architectures.
+- **Network & Perimeter Security**: IP addressing, subnetting, pivoting, port forwarding, wireless pentesting, and firewall/IDS evasion.
+- **System Security & Exploitation**: Privilege escalation, Active Directory Kerberos mechanics (AS-REP Roasting, Kerberoasting, Golden/Silver tickets), and buffer overflows.
+- **SOC & Detection Engineering**: Unified Kill Chain, Sysmon log telemetry, SIEM (Kibana/Splunk/Wazuh), YARA rule creation, Zeek network monitoring, and log anomaly baselining.
+- **Mobile, IoT & OT / SCADA**: OWASP Mobile Top 10, Janus vulnerability, Frida SSL pinning bypass, hardware reversing (UART/JTAG), Purdue Model, and Modbus TCP.
+- **Cloud & Container Security**: Shared responsibility, envelope encryption (KMS), Docker socket escapes, privileged breakouts, and Microsoft Graph Entra ID abuse.
+- **DevSecOps & Forensics**: Git repository exploration, dangling object recovery, Linux kernel `auditd` forensics, and CVE-2021-3156 investigation.
 
 ---
 
 ## 🛠️ Tools & Technologies
 
-- **Offensive Tools**: Burp Suite, Nmap, EyeWitness, Socat, Metasploit, Hashcat, John the Ripper, Hydra
-- **Defensive & SIEM Tools**: Sysmon, Wireshark, Kibana, Splunk, Wazuh, YARA
-- **Infrastructure & Scripting**: Git, Bash, Python, Linux/Windows native auditing
+- **Offensive Tools**: Burp Suite, Caido, OWASP ZAP, Nmap, EyeWitness, Socat, Metasploit, Hashcat, John the Ripper, Hydra, SQLMap, NoSQLMap, Frida
+- **Defensive & SIEM Tools**: Sysmon, Wireshark, Tshark, Zeek, Kibana, Splunk, Wazuh, YARA, Falco, Elastic Endgame (Defend)
+- **Infrastructure & Scripting**: Git, Bash, Python, Linux/Windows native auditing, Docker
 
 ---
 
@@ -53,26 +55,31 @@ My journey covers both offensive (Red Team) and defensive (Blue Team) security, 
 
 Detailed navigation and walkthrough indexes are available within each section's README.
 
-- 📁 **[INE Labs](./INE_labs/)** — Detailed practical lab walkthroughs from INE (Offensive, Defensive, SIEM, & DevSecOps).
-- 📁 **[Assignments](./assignments/)** — CTF cheat sheets, PTES reports, network recon walkthroughs, and cyber kill chain analysis.
+- 📁 **[CEH Master Study Hub](./ceh/)** — Certified Ethical Hacker (CEH v13) modules (01–20), attack taxonomy, and exam preparation.
+  - 🎯 **[Test Preparation Dashboard](./ceh/test-preparation/)** — 153 scenario teardowns, formula sheets, and exam strategy.
 - 📁 **[Weekly Notes](./week-01/)** — Daily class notes categorized by week:
   - [Week 01](./week-01/) | [Week 02](./week-02/) | [Week 03](./week-03/) | [Week 04](./week-04/) | [Week 05](./week-05/) | [Week 06](./week-06/) | [Week 07](./week-07/) | [Week 08](./week-08/)
-- 📁 **[CEH Notes](./ceh/)** — Certified Ethical Hacker (CEH) module notes, attack taxonomy, security pillars, and hands-on validation.
-- 📁 **[Meetups & Events](./meetups/)** — Takeaways and notes from cybersecurity community events.
-- 📁 **[Blue Team Labs](./blueteamlab/)** — Blue team investigations, Sysmon log analysis, and phishing email triage.
-- 📁 **[Pentest Garage](./pentestgarage/)** — Independent pentesting practice, web exploitation, privilege escalation, and container labs.
+- 📁 **[INE Labs](./INE_labs/)** — 37 practical lab walkthroughs from INE (Offensive, Defensive, SIEM, Malware Analysis & DevSecOps).
+- 📁 **[Blue Team Labs](./blueteamlab/)** — Blue team investigations, Linux kernel `auditd` forensics (`paranoid`), Sysmon log analysis, and phishing email triage.
+- 📁 **[Pentest Garage](./pentestgarage/)** — Independent pentesting practice, web exploitation, privilege escalation, container labs, and AI prompt security.
+- 📁 **[Assignments](./assignments/)** — CTF cheat sheets, PTES penetration testing reports, network recon walkthroughs, and Cyber Kill Chain analysis.
+- 📁 **[Meetups & Events](./meetups/)** — Takeaways, architecture diagrams, and certifications from cybersecurity community events (e.g., OWASP Juice Shop Workshop).
+- 📁 **[References](./References/)** — Official EC-Council CEH courseware, NIST guidelines, SOC architecture documentation, and visual cheat sheets.
 
 ---
 
 ## 🔭 Current Focus
 
-Currently, I am deep-diving into **Advanced Web Application Vulnerabilities** (SSRF, SSTI, File Uploads) and integrating offensive techniques with **SOC detection mechanics**. I aim to understand not just how to exploit these vulnerabilities, but what telemetry they generate and how they can be reliably detected in enterprise SIEM platforms.
+Currently, I am consolidating the complete **EC-Council Certified Ethical Hacker (CEH v13)** curriculum across all 20 modules—synthesizing advanced domains including Cloud IAM & container breakouts, OT/SCADA Modbus security, mobile malware engineering, and post-quantum cryptanalysis—alongside deep-dive **Blue Team forensics** (Linux kernel `auditd` analysis, Baron Samedit privilege escalation, and Sysmon/Wazuh lateral movement detection).
 
 ---
 
-## 📈 Progress
+## 📈 Progress & Key Milestones
 
-I am consistently updating this repository with new notes and lab findings. My progress reflects a transition from understanding fundamental protocols and architectures to executing complex, multi-stage attacks and designing enterprise defense strategies. Each lab and note is a step closer to becoming a proficient cybersecurity professional.
+- 🎓 **CEH v13 Full Curriculum Coverage**: Completed comprehensive notes across all 20 modules ([Modules 01–03](./ceh/), [Modules 04–14 Master Class](./ceh/2026-10-27-ceh-master-class-notes.md), and [Modules 15–20 Master Class](./ceh/2026-10-31-ceh-advanced-domains-notes.md)).
+- 🎯 **Exam Preparation Hub**: Built a master revision exam with [153 high-yield scenario teardowns](./ceh/test-preparation/comprehensive-mcq-revision-test.md), distractor analyses, and SOC engineering countermeasures.
+- 🔬 **Practical Defensive Telemetry**: Documented 37 [INE practical labs](./INE_labs/) and hands-on [Blue Team investigations](./blueteamlab/), including custom Wazuh rules for PsExec and Mimikatz.
+- 🤝 **Community & Hands-On Workshops**: Active participation in industry events including the OWASP Juice Shop Workshop Chennai ([Meetup Notes](./meetups/)).
 
 ---
 *Generated and maintained as a structured learning portfolio.*

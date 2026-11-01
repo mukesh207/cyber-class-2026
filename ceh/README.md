@@ -11,23 +11,25 @@ Comprehensive technical study notes for the EC-Council **Certified Ethical Hacke
 | **01** | **Introduction to Ethical Hacking** | ✅ Completed | CIA Triad, Security Frameworks, Threat Attribution, AI in Pentesting, Defense-in-Depth, CVSS | [View Notes](./mod-01-introduction-to-ethical-hacking.md) |
 | **02** | **Footprinting and Reconnaissance** | ✅ Completed | Passive/Active OSINT, 24 Search Engines, DNS Interrogation, AXFR, Email Header Forensics, Splunk Detection | [View Notes](./mod-02-footprinting-and-reconnaissance.md) |
 | **03** | **Scanning Networks** | ✅ Completed | Host Discovery, TCP Flags/Handshakes, Port Scanning (SYN, FIN, Xmas, Idle Zombie), Fragmentation, Routing Manipulation, Proxy Chaining, Banner Grabbing | [View Notes](./mod-03-scanning-networks.md) |
-| **04** | **Enumeration** | ⏳ Next Up | NetBIOS, SNMP, LDAP, NTP, SMTP, RPC, DNS Zone Enumeration, Active Directory Initial Probing | *Queued* |
-| **05** | **Vulnerability Analysis** | 📋 Planned | Vulnerability Scoring (CVSS v4), Nessus/OpenVAS scanning, False Positive Validation | *Planned* |
-| **06** | **System Hacking** | 📋 Planned | Password Cracking (Hashcat, John), Privilege Escalation (Linux/Windows), Steganography, Log Clearing | *Planned* |
-| **07** | **Malware Threats** | 📋 Planned | Trojans, Backdoors, Polymorphic Viruses, Ransomware, Static & Dynamic Analysis, YARA | *Planned* |
-| **08** | **Sniffing** | 📋 Planned | Wireshark Packet Analysis, ARP Poisoning, MAC Flooding, DHCP Starvation, Rogue Gateways | *Planned* |
-| **09** | **Social Engineering** | 📋 Planned | Human Vector OSINT, Phishing Frameworks (GoPhish), Pretexting, USB drops, MFA Fatigue | *Planned* |
-| **10** | **Denial-of-Service** | 📋 Planned | Volumetric & Application DoS/DDoS, SYN Floods, Slowloris, Amplification Attacks, Cloudflare/WAF Defenses | *Planned* |
-| **11** | **Session Hijacking** | 📋 Planned | Layer 4 & Layer 7 Hijacking, TCP Sequence Prediction, Cookie Manipulation, Cross-Site Scripting (XSS) | *Planned* |
-| **12** | **Evading IDS, Firewalls, & Honeypots** | 📋 Planned | Fragmentation, Decoy Scans, Protocol Tunneling, Honeypot Fingerprinting (Kippo/Cowrie) | *Planned* |
-| **13** | **Hacking Web Servers** | 📋 Planned | Web Server Architecture, Apache/Nginx Misconfigurations, Directory Traversal, Web Shell Injection | *Planned* |
-| **14** | **Hacking Web Applications** | 📋 Planned | OWASP Top 10, SSRF, SSTI, IDOR, Broken Authentication, API Security | *Planned* |
-| **15** | **SQL Injection** | 📋 Planned | In-Band (Union-based), Inferential (Blind/Time-based), Out-of-Band (OOB), SQLMap Automation & Defense | *Planned* |
+| **04–14** | **Master Class: Enumeration to Web Attacks** | ✅ Completed | Protocols (SMB, SNMP, NetBIOS, LDAP, NTP, NFS, SMTP), Qualys VMDR, Kerberos (AS-REP, Roasting, Tickets), Buffer Overflow, YARA in SOC, Bettercap MITM, Botnets, Palo Alto NGFW, 35 Web Attacks | [View Notes](./2026-10-27-ceh-master-class-notes.md) |
+| **04** | **Enumeration** | ✅ Completed | NetBIOS suffixes, SNMP OIDs, LDAP trees, NTP monlist, SMTP commands, SMB-to-John pipeline | [View Notes](./2026-10-27-ceh-master-class-notes.md#2-module-04-advanced-protocol-enumeration) |
+| **05** | **Vulnerability Analysis** | ✅ Completed | CVSS v3.1 vs v4.0, Qualys VMDR vs Nessus architecture, assessment lifecycles | [View Notes](./2026-10-27-ceh-master-class-notes.md#3-module-05-vulnerability-analysis--enterprise-assessment) |
+| **06** | **System Hacking** | ✅ Completed | Password cracking, Active Directory, Kerberos flows, Golden/Silver tickets, Buffer Overflows, CI/CD | [View Notes](./2026-10-27-ceh-master-class-notes.md#4-module-06-system-hacking-active-directory--kerberos-exploitation) |
+| **07** | **Malware Threats** | ✅ Completed | APT lifecycle, LOLBins, YARA rule structure & SOC production detection rules | [View Notes](./2026-10-27-ceh-master-class-notes.md#5-module-07-malware-threats-apt-lifecycle--soc-yara-engineering) |
+| **08** | **Sniffing** | ✅ Completed | Snooping vs Sniffing vs Spoofing vs Poisoning, Wireshark, Tshark, Bettercap, ARP/DHCP attacks | [View Notes](./2026-10-27-ceh-master-class-notes.md#6-module-08-sniffing-snooping-spoofing--network-attacks) |
+| **09** | **Social Engineering** | ✅ Completed | Cialdini's triggers, Evilginx2 MFA bypass, Synthetic identity theft | [View Notes](./2026-10-27-ceh-master-class-notes.md#7-module-09-social-engineering-identity-theft--psychological-manipulation) |
+| **10** | **Denial-of-Service** | ✅ Completed | Botnet C2, Volumetric vs State vs L7 (Slowloris deep mechanics), Amplification | [View Notes](./2026-10-27-ceh-master-class-notes.md#8-module-10-denial-of-service-dos-ddos--botnets) |
+| **11** | **Session Hijacking** | ✅ Completed | Layer 4 vs Layer 7, Caido vs Burp Suite comparative architecture, Token defenses | [View Notes](./2026-10-27-ceh-master-class-notes.md#9-module-11-session-hijacking--web-proxies) |
+| **12** | **Evading IDS, Firewalls, & Honeypots** | ✅ Completed | Network zones, Snort rules, Palo Alto NGFW (App-ID, User-ID, Content-ID), Tor | [View Notes](./2026-10-27-ceh-master-class-notes.md#10-module-12-evading-ids-firewalls--honeypots) |
+| **13** | **Hacking Web Servers** | ✅ Completed | Web architectures, misconfigurations, AI prompt engineering in pentesting | [View Notes](./2026-10-27-ceh-master-class-notes.md#11-modules-13--14-web-servers-applications--owasp-top-10) |
+| **14** | **Hacking Web Applications** | ✅ Completed | OWASP Top 10 (2017 vs 2021 evolution), Full Catalog of 35 Web Application Attacks | [View Notes](./2026-10-27-ceh-master-class-notes.md#12-the-complete-catalog-of-35-web-application-attacks) |
+| **15–20** | **Master Class: Advanced Domains & Specialized Vectors** | ✅ Completed | SQLMap/NoSQLMap, URL Encodings, Tool Matrix (ZAP, Burp, Caido, Snort), OWASP Mobile M1-M10, Agent Smith, IoT Hardware/Firmware, OT/SCADA/PLC Modbus, Cloud IaaS/PaaS/SaaS, Docker Escapes, Microsoft Graph, Endgame EDR, Cryptanalysis | [View Notes](./2026-10-31-ceh-advanced-domains-notes.md) |
+| **15** | **SQL & NoSQL Injection** | ✅ Completed | BEUSTQ detection techniques, NoSQLMap operator injection, WAF impedance mismatch | [View Notes](./2026-10-31-ceh-advanced-domains-notes.md#3-data-tier-exploitation--character-encoding-mechanics) |
 | **16** | **Hacking Wireless Networks** | 📋 Planned | 802.11 Protocols, WPA2/WPA3 4-Way Handshake Capture, PMKID Cracking, Rogue APs, Evil Twins | *Planned* |
-| **17** | **Hacking Mobile Platforms** | 📋 Planned | Android APK Reverse Engineering, iOS Sandboxing, Frida Hooking, Mobile Device Management (MDM) | *Planned* |
-| **18** | **IoT and OT Hacking** | 📋 Planned | Firmware Analysis, Hardware Debugging (JTAG/UART), Modbus/DNP3 SCADA protocols | *Planned* |
-| **19** | **Cloud Computing** | 📋 Planned | AWS/Azure/GCP IAM Misconfigurations, S3 Bucket Takeover, Privilege Escalation in Cloud, CloudTrail Forensics | *Planned* |
-| **20** | **Cryptography** | 📋 Planned | Symmetric/Asymmetric Ciphers, PKI, Diffie-Hellman Key Exchange, Cryptanalysis, Hash Collisions | *Planned* |
+| **17** | **Hacking Mobile Platforms** | ✅ Completed | OWASP Mobile Top 10 (2024), Janus Flaw (CVE-2019-2107), Agent Smith, Frida SSL Bypass | [View Notes](./2026-10-31-ceh-advanced-domains-notes.md#5-module-17-mobile-platform-security--malware-engineering) |
+| **18** | **IoT and OT Hacking** | ✅ Completed | UART/JTAG reversing, Binwalk firmware extraction, Purdue Model (L0-L5), Modbus TCP, Fortinet & Defender for IoT | [View Notes](./2026-10-31-ceh-advanced-domains-notes.md#6-module-18-iot--operational-technology-ot--scada--plc-security) |
+| **19** | **Cloud Computing & Containers** | ✅ Completed | Shared Responsibility Matrix, Envelope Encryption, Docker Socket & Privileged Breakouts, Microsoft Graph Abuse | [View Notes](./2026-10-31-ceh-advanced-domains-notes.md#7-module-19-cloud-computing-containers--identity-graph-exploitation) |
+| **20** | **Cryptography & Cryptanalysis** | ✅ Completed | COA/KPA/CPA/CCA models, Shor's/Grover's algorithms, NIST PQC Standards (ML-KEM, ML-DSA) | [View Notes](./2026-10-31-ceh-advanced-domains-notes.md#9-module-20-cryptanalysis--post-quantum-cryptography) |
 
 ---
 
@@ -35,7 +37,7 @@ Comprehensive technical study notes for the EC-Council **Certified Ethical Hacke
 
 A dedicated preparation area equipped with EC-Council exam-style question banks, quantitative risk formulas, protocol port cram sheets, and elimination strategies:
 
-- 🎯 **[Comprehensive 19-Question MCQ Revision Test](./test-preparation/comprehensive-mcq-revision-test.md)** — In-depth technical breakdowns, ASCII attack flows, distractor analysis, and SOC engineering countermeasures for all 19 multi-domain exam scenarios.
+- 🎯 **[Comprehensive 153-Question Master MCQ Revision Test](./test-preparation/comprehensive-mcq-revision-test.md)** — In-depth technical breakdowns, ASCII attack flows, distractor analysis, and SOC engineering countermeasures for all 153 multi-domain exam scenarios.
 - 📝 **[Modules 01 & 02 High-Yield Practice Exam](./test-preparation/mod-01-and-02-practice-questions.md)** — 15 realistic scenario-based questions with interactive expandable explanations.
 - ⚡ **[Quick-Cram Exam Day Cheat Sheet](./test-preparation/quick-cram-cheat-sheet.md)** — High-yield formulas (ALE, SLE, ARO), port matrices, DNS record types, and command cheat sheets.
 - 📋 **[Exam Blueprint & Trap Elimination Protocol](./test-preparation/README.md)** — Domain weightings, time-management tips, and question qualifier strategies.
@@ -79,6 +81,28 @@ A dedicated preparation area equipped with EC-Council exam-style question banks,
 - **Banner Grabbing & Fingerprinting:** Active raw socket interrogation (`nc`, `curl`, `openssl`, `nmap -sV`) vs. passive header sniffing (`p0f`, TTL and Window Size heuristic matrices).
 - **SOC Detection & Defense:** Snort/Suricata rules for Xmas/NULL scans and SYN sweeps; Splunk SIEM SPL correlation for abnormal RST/SYN ratios; Linux kernel hardening (`sysctl` syncookies, source-route rejection).
 - **Real-Time Technical Scenario & Troubleshooting:** Red Team DMZ assessment vs. SOC response; diagnosing failed inverse scans, proxychains raw leaks, and noisy idle zombies.
+
+### 📕 [Modules 04–14: Comprehensive Master Class Notes (Enumeration to Web Attacks)](./2026-10-27-ceh-master-class-notes.md)
+- **Protocol Enumeration:** Deep dive into SMB (null-sessions to John the Ripper cracking), NetBIOS suffixes, SNMP MIB/OIDs, LDAP directory trees, NTP monlist amplification, NFS root squashing, SMTP command verification, and IPsec aggressive-mode probing.
+- **Enterprise Recon & AI Workflows:** OWASP Amass graph database mechanics and ShellGPT (`sgpt`) prompt chaining for automated reconnaissance and payload generation.
+- **Vulnerability Analysis:** CVSS v3.1 vs v4.0 comparative scoring, Qualys VMDR cloud-agent architecture vs Tenable Nessus.
+- **System Hacking & Active Directory:** Password cracking (Hashcat/John/pycrack), deep Kerberos 3-phase authentication flows, AS-REP Roasting, Kerberoasting, and an architectural comparison between Golden Tickets and Silver Tickets.
+- **Memory Exploitation & CI/CD Security:** Buffer overflow stack anatomy (ESP, EBP, EIP overwrite), memory defenses (ASLR, DEP, Canaries), Poisoned Pipeline Execution (PPE), and offensive/defensive Bash scripts.
+- **Malware & SOC YARA Engineering:** APT tradecraft, living-off-the-land techniques, and production-ready YARA rules for webshells and Cobalt Strike beacons.
+- **Network Attacks & Traffic Analysis:** Snooping vs. Sniffing vs. Spoofing vs. Poisoning, Wireshark filters, headless `tshark` scripting, Bettercap MITM, ARP cache poisoning, and Layer 2 defenses (DAI, DHCP Snooping, Port Security).
+- **Denial of Service & Session Hijacking:** Botnet C2 topologies, Slowloris thread exhaustion mechanics, Layer 4 TCP hijacking vs. Layer 7 token theft, and a comparative analysis of Caido vs. Burp Suite.
+- **Perimeter Defense & Evasion:** Network segmentation zones (DMZ, LAN), Snort rule syntax, Palo Alto NGFW (App-ID, User-ID, Content-ID), and Anonymous Proxies/Tor onion routing.
+- **Web Applications & The 35 Attacks:** Evolution of OWASP Top 10 (2017 vs. 2021) and the exhaustive catalog of all 35 Web Application Attacks from the CEH curriculum.
+
+### 📓 [Modules 15–20: Advanced Domains & Specialized Attack Vectors](./2026-10-31-ceh-advanced-domains-notes.md)
+- **Client-Side Exploitation:** Clickjacking (UI redressing) DOM mechanics, framebusting scripts and HTML5 sandbox bypasses, defensive response headers (`X-Frame-Options` and CSP `frame-ancestors`), and Watering Hole Attack (Strategic Web Compromise) lifecycles.
+- **Data-Tier Attacks & Character Encodings:** Character conversion pipelines (ASCII vs. Hex vs. URL vs. Overlong UTF-8), WAF impedance mismatches, NoSQL injection mechanics in MongoDB/BSON, NoSQLMap automated extraction, and SQLMap's 6 detection techniques (`BEUSTQ`) with tamper script bypasses.
+- **Security Tooling Ecosystem:** Comprehensive comparative matrix and operational workflows across OWASP ZAP (headless DAST), PortSwigger Burp Suite (Intruder attack modes & Collaborator OOB), Caido (next-gen Rust proxy architecture), Snort (signature grammar & preprocessors), and SQLMap.
+- **Mobile Security (Module 17):** Updated OWASP Mobile Top 10 (M1 to M10), Android UID application sandboxing, Agent Smith malware dissecting the Janus vulnerability (CVE-2019-2107), and dynamic runtime instrumentation using Frida and Objection.
+- **IoT & Operational Technology (Module 18):** 4-tier IoT architecture, hardware reversing (UART pinout discovery, JTAG boundary scanning), firmware extraction via `binwalk`, Purdue Model (Levels 0–5) IT/OT architectural contrast, Modbus TCP (Port 502) unauthenticated function code abuse, and enterprise defenses (Fortinet FortiGate Rugged vs. Microsoft Defender for IoT).
+- **Cloud Computing & Containers (Module 19):** Cloud service models (IaaS, PaaS, SaaS) and the Shared Responsibility Matrix, envelope encryption with KMS, container privilege escalation (Docker socket `/var/run/docker.sock` and `--privileged` escapes), Linux namespaces/cgroups, Falco runtime auditing, and Microsoft Graph API Entra ID exploitation (illicit consent grant phishing & PRT extraction).
+- **Endpoint Detection & Stealth Backdoors:** Elastic Endgame EDR (Elastic Defend) sensor architecture, user-space system call detours (`ntdll.dll`), Process Hollowing step-by-step injection, Windows persistence mechanisms (Run keys, services, WMI event subscriptions), and hunting unbacked executable memory.
+- **Cryptanalysis & Quantum Threats (Module 20):** Classical cryptanalysis models (COA, KPA, CPA, CCA, side-channel leakage), Shor's algorithm (asymmetric destruction) vs. Grover's algorithm (symmetric halving), and NIST's standardized Post-Quantum Cryptography algorithms (ML-KEM, ML-DSA, SLH-DSA).
 
 ---
 

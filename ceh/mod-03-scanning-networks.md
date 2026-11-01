@@ -3,7 +3,7 @@
 > **Course:** Certified Ethical Hacker (CEH v13) / Threat Hunting & SOC Engineering  
 > **Topic:** Module 03 — Host Discovery, TCP/IP Flag Mechanics, Handshake Analysis, Port Scanning Anatomy (SYN, Connect, Inverse, Idle Zombie), Advanced Probing, Packet Fragmentation, Routing Manipulation, Proxy Chaining, Banner Grabbing & Defensive Detection Engineering  
 > **Date:** 2026-10-26  
-> **Navigation:** [🏠 CEH Dashboard](./README.md) | [⬅️ Module 02: Footprinting and Reconnaissance](./mod-02-footprinting-and-reconnaissance.md) | [➡️ Module 04: Enumeration (Upcoming)](#) | [Main Dashboard](../README.md)
+> **Navigation:** [🏠 CEH Dashboard](./README.md) | [⬅️ Module 02: Footprinting and Reconnaissance](./mod-02-footprinting-and-reconnaissance.md) | [➡️ Module 04–14: Master Class Notes](./2026-10-27-ceh-master-class-notes.md) | [Main Dashboard](../README.md)
 
 ---
 

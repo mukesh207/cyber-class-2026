@@ -29,3 +29,6 @@ venv/
 
 # Local lab material
 pentestgarage/
+
+# Large proprietary courseware slides (> 50MB)
+References/CEH_REF/*.pdf

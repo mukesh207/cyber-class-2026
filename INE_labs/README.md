@@ -1,6 +1,6 @@
 # 🔬 INE Labs
 
-A collection of detailed walkthroughs and technical notes from my INE (eLearnSecurity) practical labs. These labs focus on offensive security, network enumeration, defensive detection, log analysis, and DevSecOps workflows.
+A collection of detailed walkthroughs and technical notes from my INE (eLearnSecurity) practical labs. These labs focus on offensive security, network enumeration, defensive detection, log analysis, malware investigation, and DevSecOps workflows.
 
 > ℹ️ **Note on Content:** The `.pdf` files found within these lab directories are the official lab manuals provided by INE. The `.md` files (walkthroughs) are my personal step-by-step solutions, technical notes, and key takeaways created while completing the labs.
 
@@ -25,6 +25,11 @@ Lab_Name/
 - [System Security & Exploitation](#-system-security--exploitation)
 - [Authentication & Access Control](#-authentication--access-control)
 - [SOC, SIEM & Threat Analysis](#-soc-siem--threat-analysis)
+  - [Wazuh & Host Telemetry Engineering](#wazuh--host-telemetry-engineering)
+  - [Kibana & SIEM Log Analysis](#kibana--siem-log-analysis)
+  - [Malware Analysis & Endpoint Forensics](#malware-analysis--endpoint-forensics)
+  - [Network Traffic & Zeek Monitoring](#network-traffic--zeek-monitoring)
+  - [Core SOC Essentials](#core-soc-essentials)
 - [Git & DevSecOps](#-git--devsecops)
 
 ---
@@ -58,14 +63,37 @@ Lab_Name/
 
 ## 🛡️ SOC, SIEM & Threat Analysis
 
-- [Advanced Threat Analysis](./Advance_threat_analysis/) — Dissecting multi-stage threat indicators and payload analysis.
+### Wazuh & Host Telemetry Engineering
+- [Detecting Abnormal Network Connections with Wazuh](./Detecting_Abnormal_Network_Connections_With_Wazuh/) — Identifying unauthorized outbound connections, C2 callbacks, and anomalous socket bindings via Wazuh agents.
+- [Detecting Incidents in Internet-Facing Environments](./Detecting_Incidents_in_Internet-Facing_Environments/) — Investigating web application compromises, reverse shell executions, and Apache access log anomalies.
+- [Detecting Mimikatz Threat Using Sysmon & Wazuh](./Detecting_Mimikatz_Threat_Using_Sysmon_and_Wazuh/) — Capturing LSASS process memory access (`Sysmon Event ID 10`) and building custom Wazuh XML detection rules.
+- [Detecting PsExec with Wazuh](./Detecting_PsExec_with_Wazuh/) — Tracking lateral movement via remote service installation (`Sysmon Event ID 11/12/13`), named pipes, and correlating Wazuh alerts.
+- [Introduction to Wazuh](./Introduction_to_Wazuh/) — Wazuh manager/agent architecture, enrollment, ruleset customization, and dashboard navigation.
+- [Threat Detection with Wazuh & Sysmon](./Threat_Detection_with_Wazuh_Sysmon/) — Telemetry correlation between Windows Sysmon events and Wazuh log pipelines.
+
+### Kibana & SIEM Log Analysis
+- [Kibana: DNS Log Analysis](./Kibana:_DNS_log_analysis/) — Querying DNS telemetry to identify malicious domain generation algorithms (DGA) and DNS tunneling.
 - [Kibana: Windows Event Logs I](./Kibana:_Windows_Event_Logs_I/) — Querying Windows event telemetry and security logs in Kibana.
-- [Kibana: Windows Event Logs II](./Kibana:_Windows_Event_Logs_II/) — Advanced Kibana queries and authentication log analysis.
+- [Kibana: Windows Event Logs II](./Kibana:_Windows_Event_Logs_II/) — Advanced Kibana Lucene/KQL queries and logon authentication auditing.
 - [Kibana: Windows Event Logs III](./Kibana:_Windows_Event_Logs_III/) — Investigating complex process execution and lateral movement events in Kibana.
-- [Log Anomaly Detection Basics](./Log_Anomaly_Detection_Basics/) — Identifying baseline deviations and log anomalies.
+- [Log Anomaly Detection Basics](./Log_Anomaly_Detection_Basics/) — Python-driven statistical baselining (`detect.py`) and log anomaly identification.
+
+### Malware Analysis & Endpoint Forensics
+- [Advanced Threat Analysis](./Advance_threat_analysis/) — Dissecting multi-stage threat indicators, CyberChef decoding, and payload analysis.
+- [Investigating Malware Infection](./Investigating_Malware_Infection/) — Endpoint compromise triage, rogue process tree reconstruction, and persistence inspection.
+- [Malware Analysis: Trojan](./Malware_Analysis_Trojan/) — Behavioral and dynamic analysis of trojanized executables, API hooking, and artifact extraction.
+- [Malware Fundamentals: LockBit 2.0 Analysis](./Malware_Fundamentals_LockBit_2_Analysis/) — Dissecting LockBit ransomware, VSS volume shadow copy deletion, multi-threaded encryption, and defensive IOC extraction.
+- [SOC 1: Detecting Malware Walkthrough](./SOC1_Detecting_Malware_Walkthrough/) — Tier 1 triage, malicious hash reputation checking, payload quarantine, and incident response containment.
+
+### Network Traffic & Zeek Monitoring
+- [PCAP Analysis with Zeek](./PCAP_Analysis_With_Zeek/) — Network security monitoring with Zeek, protocol log triage (`conn.log`, `dns.log`, `http.log`), and suspicious stream carving.
+- [SOC-1: Networking Essentials](./SOC-1_Networking_Essentials/) — Packet analysis, network telemetry, and traffic flow analysis.
+
+### Core SOC Essentials
 - [SOC-1: Windows Essentials](./SOC-1_:_Windows_Essentials/) — Core Windows security log monitoring and SOC analyst workflows.
 - [SOC-1: Linux Essentials](./SOC-1_Linux_Essentials/) — Linux audit log analysis, syslog investigation, and bash history telemetry.
-- [SOC-1: Networking Essentials](./SOC-1_Networking_Essentials/) — Packet analysis, network telemetry, and traffic flow analysis.
+- [Introduction to Splunk](./Introduction_to_Splunk/) — Lab evidence and query snapshots for enterprise Splunk SIEM search processing language (SPL).
+- [Malicious User Behaviour Analysis](./Malicious_User_Behaviour_Analysis/) — User and Entity Behavior Analytics (UEBA) evidence and anomalous insider activity tracking.
 
 ---
 

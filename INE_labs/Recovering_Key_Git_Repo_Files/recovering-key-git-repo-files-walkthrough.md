@@ -62,7 +62,7 @@ Gateway   = 192.154.86.1
 
 The lab warns not to attack the gateway.
 
-![Screenshot showing eth1 with 192.154.86.2](ip-a.png)
+![Screenshot showing eth1 with 192.154.86.2](screenshots/ip-a.png)
 
 ---
 
@@ -82,7 +82,7 @@ The target was identified as:
 
 The scan also showed the gateway and the Kali machine. The gateway is not the intended target.
 
-![Screenshot showing the subnet scan and discovered hosts](nmap-network.png)
+![Screenshot showing the subnet scan and discovered hosts](screenshots/nmap-network.png)
 
 ---
 
@@ -113,7 +113,7 @@ Port 5000 → Calculator web application
 Port 8000 → Python/Werkzeug HTTP service
 ```
 
-![Screenshot showing nmap -sS -sV 192.154.86.3](nmap-target.png)
+![Screenshot showing nmap -sS -sV 192.154.86.3](screenshots/nmap-target.png)
 
 ---
 
@@ -155,7 +155,7 @@ It may contain:
 
 If `.git` is publicly accessible, an attacker may be able to recover repository history, developer information, configuration, credentials, and source code.
 
-![Screenshot showing Nikto discovering exposed .git files](nikto.png)
+![Screenshot showing Nikto discovering exposed .git files](screenshots/nikto.png)
 
 ---
 
@@ -185,7 +185,7 @@ utils.py
 
 The Git index is not a normal text file. `strings` extracts readable sequences from binary data, which makes it useful for quickly identifying filenames and other readable information.
 
-![Screenshot showing .gitignore, API.py and utils.py](strings.png)
+![Screenshot showing .gitignore, API.py and utils.py](screenshots/strings.png)
 
 ---
 
@@ -247,7 +247,7 @@ secret exposed
 
 Being ignored by Git is not the same as being protected by the web server.
 
-![Screenshot showing .gitignore and /secret_flag](first-flag.png)
+![Screenshot showing .gitignore and /secret_flag](screenshots/first-flag.png)
 
 ---
 
@@ -285,7 +285,7 @@ smith.jones@devl.evilcorp.com
 smith.jones@devl.evilcorp.com
 ```
 
-![Screenshot showing Smith Jones and the email in .git/logs/HEAD](commit-history.png)
+![Screenshot showing Smith Jones and the email in .git/logs/HEAD](screenshots/commit-history.png)
 
 ---
 
@@ -327,7 +327,7 @@ supers3cr3t@123!
 supers3cr3t@123!
 ```
 
-![Screenshot showing .git/config and the exposed credentials](flag3.png)
+![Screenshot showing .git/config and the exposed credentials](screenshots/flag3.png)
 
 ---
 
@@ -386,7 +386,7 @@ Long keys should be copied carefully because a single character makes the answer
 k9YKOOS7phqbf8UQmAkXxYozikptDkIzZgOCBo0sBdQDY2I8rvwj
 ```
 
-![Screenshot showing the SECRET_KEY inside API.py](flag4.png)
+![Screenshot showing the SECRET_KEY inside API.py](screenshots/flag4.png)
 
 ---
 
@@ -635,7 +635,7 @@ b89e17d2c16bd928794bc8a8daf18adb28104964
 
 A reverse shell was demonstrated in the lab material, but once direct command execution was confirmed, a reverse shell was not required to retrieve the flag.
 
-![Screenshot showing the final flag returned by the calculator](final-flag.png)
+![Screenshot showing the final flag returned by the calculator](screenshots/final-flag.png)
 
 ---
 
@@ -657,7 +657,7 @@ The lab was completed successfully:
 | 4 | Flask SECRET_KEY | `k9YKOOS7phqbf8UQmAkXxYozikptDkIzZgOCBo0sBdQDY2I8rvwj` |
 | 5 | Target machine flag | `b89e17d2c16bd928794bc8a8daf18adb28104964` |
 
-![Screenshot showing INE lab status: Completed / 5 of 5 flags captured](completed.png)
+![Screenshot showing INE lab status: Completed / 5 of 5 flags captured](screenshots/completed.png)
 
 ---
 

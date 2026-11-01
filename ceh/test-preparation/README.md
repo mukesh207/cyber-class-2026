@@ -42,8 +42,8 @@ The 20 modules of CEH v13 map into **9 primary exam domains**. Notice that **Rec
 
 ## 📚 Test Prep Materials Directory
 
-1. 🎯 **[Comprehensive 19-Question MCQ Revision Test](./comprehensive-mcq-revision-test.md)**
-   - In-depth technical teardowns for all 19 multi-domain exam scenarios.
+1. 🎯 **[Comprehensive 153-Question Master MCQ Revision Test](./comprehensive-mcq-revision-test.md)**
+   - In-depth technical teardowns for all 153 multi-domain exam scenarios.
    - ASCII architecture diagrams, distractor analysis, and SOC engineering mitigations.
 2. 📝 **[Module 01 & 02 High-Yield Practice Exam](./mod-01-and-02-practice-questions.md)**
    - 15 scenario-based questions matching EC-Council examination style.
@@ -52,6 +52,8 @@ The 20 modules of CEH v13 map into **9 primary exam domains**. Notice that **Rec
    - Risk management formulas ($\text{ALE} = \text{SLE} \times \text{ARO}$, CVSS metrics).
    - Core reconnaissance ports, DNS record types, and email authentication tables.
    - Essential CLI tools & operational command flags.
+4. 📖 **[Consolidated MCQ Revision Bank (153 Questions)](../../References/CEH_v13_Comprehensive_MCQ_Revision_Bank.md)**
+   - Consolidated raw question and answer key bank categorized across all exam domains.
 
 ---
 
@@ -81,4 +83,4 @@ The 20 modules of CEH v13 map into **9 primary exam domains**. Notice that **Rec
 
 ---
 
-*Navigation:* [🏠 CEH Master Hub](../README.md) | [📘 Module 01 Notes](../mod-01-introduction-to-ethical-hacking.md) | [📙 Module 02 Notes](../mod-02-footprinting-and-reconnaissance.md)
+*Navigation:* [🏠 CEH Master Hub](../README.md) | [📘 Mod 01](../mod-01-introduction-to-ethical-hacking.md) | [📙 Mod 02](../mod-02-footprinting-and-reconnaissance.md) | [📗 Mod 03](../mod-03-scanning-networks.md) | [📕 Mods 04–14](../2026-10-27-ceh-master-class-notes.md) | [📓 Mods 15–20](../2026-10-31-ceh-advanced-domains-notes.md)
