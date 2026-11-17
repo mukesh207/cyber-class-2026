@@ -1,5 +1,7 @@
 # 📝 CEH v13 High-Yield Practice Exam: Modules 01 & 02
 
+> **Navigation:** [🏠 CEH Master Hub](../README.md) | [🚀 Web Exam Simulator](./exam-simulator.html) | [📝 125Q Mock Paper](./ceh-v13-mock-exam-125q.md) | [📋 Test Prep Dashboard](./README.md)  
+
 **Domain Focus:** Information Security Fundamentals, Frameworks, AI in Pentesting, Passive & Active Footprinting, DNS Interrogation, Network/Email Forensics, and Threat Mitigation.
 
 > [!TIP]

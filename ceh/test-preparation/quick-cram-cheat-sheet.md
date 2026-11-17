@@ -1,5 +1,7 @@
 # ⚡ CEH v13 Quick-Cram Exam Day Cheat Sheet
 
+> **Navigation:** [🏠 CEH Master Hub](../README.md) | [🚀 Web Exam Simulator](./exam-simulator.html) | [📝 125Q Mock Paper](./ceh-v13-mock-exam-125q.md) | [📋 Test Prep Dashboard](./README.md)  
+
 A concise, high-yield reference guide summarizing core formulas, protocol ports, CLI syntax, and technical matrices tested in CEH v13 (Modules 01 & 02).
 
 ---

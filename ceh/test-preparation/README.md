@@ -40,19 +40,50 @@ The 20 modules of CEH v13 map into **9 primary exam domains**. Notice that **Rec
 
 ---
 
+## 🖥️ Interactive Web-Based Exam Simulator
+
+Experience the authentic **Pearson VUE / EC-Council Proctored Exam Environment** right in your browser:
+
+- 🚀 **[Launch Web Exam Simulator](./exam-simulator.html)** — Pure HTML5/JavaScript application with zero external dependencies.
+- ⚡ **One-Click Terminal Launcher**:
+  ```bash
+  # Launch directly in your default Linux web browser:
+  ./launch_simulator.sh
+  ```
+
+```text
++-----------------------------------------------------------------------------------+
+|               CEH v13 WEB EXAM SIMULATOR CAPABILITIES                            |
++-----------------------------------------------------------------------------------+
+| 1. Realistic Timer         | 4-Hour Countdown with low-time visual warnings (<30m)|
+| 2. Distractor Strikethrough| Click [<s>] on any choice to eliminate wrong options |
+| 3. Question Navigator Grid | Interactive 125-cell grid (Answered/Unanswered/Flag) |
+| 4. Multiple Exam Modes     | 125Q Blueprint, 50Q Sprint, 25Q Quick, Domain Drills |
+| 5. Official Score Report   | Pass/Fail determination (Cut-Score 70%), Domain Bars |
+| 6. In-Depth SOC Review     | ASCII attack flows, distractor teardowns, note links |
+| 7. Persistent History DB   | Browser localStorage stores every attempt, score, &  |
+|                            | domain breakdown with JSON backup & Markdown export  |
++-----------------------------------------------------------------------------------+
+```
+
+---
+
 ## 📚 Test Prep Materials Directory
 
-1. 🎯 **[Comprehensive 153-Question Master MCQ Revision Test](./comprehensive-mcq-revision-test.md)**
+1. 🚀 **[CEH v13 Web-Based Exam Simulator](./exam-simulator.html)** *(Interactive Proctored Testing App with Persistent History Database)*
+2. 📝 **[Official 125-Question Mock Examination Paper](./ceh-v13-mock-exam-125q.md)** *(Full-Length 125Q Blueprint Exam with Self-Scoring Grid & Hidden Answer Keys)*
+3. 📊 **[Candidate Score Report Archive (92% Blueprint Scorecard)](./reports/2026-11-17-ceh-v13-mock-exam-92pct-scorecard.md)** *(Saved Candidate Performance Diagnostic)*
+4. 🎯 **[Comprehensive 153-Question Master MCQ Revision Test](./comprehensive-mcq-revision-test.md)**
    - In-depth technical teardowns for all 153 multi-domain exam scenarios.
    - ASCII architecture diagrams, distractor analysis, and SOC engineering mitigations.
-2. 📝 **[Module 01 & 02 High-Yield Practice Exam](./mod-01-and-02-practice-questions.md)**
+4. 📝 **[Module 01 & 02 High-Yield Practice Exam](./mod-01-and-02-practice-questions.md)**
    - 15 scenario-based questions matching EC-Council examination style.
    - Expandable explanations detailing *why* the correct answer is right and *why* distractors fail.
-3. ⚡ **[Quick-Cram Exam Day Cheat Sheet](./quick-cram-cheat-sheet.md)**
+5. ⚡ **[Quick-Cram Exam Day Cheat Sheet](./quick-cram-cheat-sheet.md)**
    - Risk management formulas ($\text{ALE} = \text{SLE} \times \text{ARO}$, CVSS metrics).
    - Core reconnaissance ports, DNS record types, and email authentication tables.
    - Essential CLI tools & operational command flags.
-4. 📖 **[Consolidated MCQ Revision Bank (153 Questions)](../../References/CEH_v13_Comprehensive_MCQ_Revision_Bank.md)**
+6. 📖 **[Consolidated MCQ Revision Bank (153 Questions)](../../References/CEH_v13_Comprehensive_MCQ_Revision_Bank.md)**
    - Consolidated raw question and answer key bank categorized across all exam domains.
 
 ---

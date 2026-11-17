@@ -2,7 +2,7 @@
 
 > **Track:** Certified Ethical Hacker (CEH v13) Exam Test Preparation  
 > **Structure:** 3-Phase Progressive Difficulty (Foundational 🟢 ➔ Core Applied 🟡 ➔ Advanced Exploitation 🔴)  
-> **Navigation:** [🏠 CEH Master Hub](../README.md) | [📋 Test Prep Dashboard](./README.md) | [⚡ Quick-Cram Cheat Sheet](./quick-cram-cheat-sheet.md)  
+> **Navigation:** [🏠 CEH Master Hub](../README.md) | [🚀 Web Exam Simulator](./exam-simulator.html) | [📝 125Q Mock Paper](./ceh-v13-mock-exam-125q.md) | [📋 Test Prep Dashboard](./README.md) | [⚡ Quick-Cram Cheat Sheet](./quick-cram-cheat-sheet.md)  
 > **Jump Links:** [🟢 Part I: Foundational (001–044)](#part-i) | [🟡 Part II: Core Applied (045–105)](#part-ii) | [🔴 Part III: Advanced Exploitation (106–153)](#part-iii) | [🧠 Understanding Check](#understanding-check)
 
 ---

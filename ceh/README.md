@@ -37,6 +37,9 @@ Comprehensive technical study notes for the EC-Council **Certified Ethical Hacke
 
 A dedicated preparation area equipped with EC-Council exam-style question banks, quantitative risk formulas, protocol port cram sheets, and elimination strategies:
 
+- 🚀 **[Interactive Web-Based Exam Simulator](./test-preparation/exam-simulator.html)** — Full-featured Pearson VUE / EC-Council exam simulation with live 4-hour timer, distractor strikethrough tool (`[<s>]`), question navigator grid, blueprint domain weights, and post-exam SOC diagnostic reports.
+- 📝 **[Official 125-Question Mock Examination Paper](./test-preparation/ceh-v13-mock-exam-125q.md)** — Full-length 125Q blueprint mock paper with self-scoring answer grid and expandable answer keys.
+- 📊 **[Candidate Score Report Archive (92% Scorecard)](./test-preparation/reports/2026-11-17-ceh-v13-mock-exam-92pct-scorecard.md)** — Archived official candidate performance report with domain proficiency metrics.
 - 🎯 **[Comprehensive 153-Question Master MCQ Revision Test](./test-preparation/comprehensive-mcq-revision-test.md)** — In-depth technical breakdowns, ASCII attack flows, distractor analysis, and SOC engineering countermeasures for all 153 multi-domain exam scenarios.
 - 📝 **[Modules 01 & 02 High-Yield Practice Exam](./test-preparation/mod-01-and-02-practice-questions.md)** — 15 realistic scenario-based questions with interactive expandable explanations.
 - ⚡ **[Quick-Cram Exam Day Cheat Sheet](./test-preparation/quick-cram-cheat-sheet.md)** — High-yield formulas (ALE, SLE, ARO), port matrices, DNS record types, and command cheat sheets.
